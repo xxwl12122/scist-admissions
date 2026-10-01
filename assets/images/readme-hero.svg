@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="1200" height="640">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050B14"/>
+      <stop offset="50%" stop-color="#0A1728"/>
+      <stop offset="100%" stop-color="#050B14"/>
+    </linearGradient>
+    <radialGradient id="cyanGlow" cx="50%" cy="30%" r="50%">
+      <stop offset="0%" stop-color="#00F2FE" stop-opacity="0.25"/>
+      <stop offset="60%" stop-color="#2563EB" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#050B14" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00F2FE"/>
+      <stop offset="50%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#4FACFE"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0D2039" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#091526" stop-opacity="0.95"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="640" fill="url(#bg)"/>
+  <rect width="1200" height="640" fill="url(#cyanGlow)"/>
+
+  <!-- Particle Mesh Network Lines -->
+  <g stroke="#00F2FE" stroke-opacity="0.18" stroke-width="1">
+    <line x1="140" y1="120" x2="280" y2="180"/>
+    <line x1="280" y1="180" x2="220" y2="310"/>
+    <line x1="220" y1="310" x2="110" y2="260"/>
+    <line x1="140" y1="120" x2="110" y2="260"/>
+    <line x1="280" y1="180" x2="420" y2="140"/>
+    <line x1="420" y1="140" x2="520" y2="220"/>
+    <line x1="980" y1="120" x2="1060" y2="210"/>
+    <line x1="1060" y1="210" x2="940" y2="280"/>
+    <line x1="940" y1="280" x2="840" y2="190"/>
+    <line x1="840" y1="190" x2="980" y2="120"/>
+    <line x1="840" y1="190" x2="740" y2="240"/>
+    <line x1="940" y1="280" x2="1080" y2="350"/>
+  </g>
+  <!-- Particle Dots -->
+  <g fill="#00F2FE">
+    <circle cx="140" cy="120" r="3" opacity="0.8"/>
+    <circle cx="280" cy="180" r="4" opacity="0.9" filter="url(#glow)"/>
+    <circle cx="220" cy="310" r="2.5" opacity="0.6"/>
+    <circle cx="110" cy="260" r="3" opacity="0.7"/>
+    <circle cx="420" cy="140" r="2.5" opacity="0.5"/>
+    <circle cx="520" cy="220" r="3" opacity="0.6"/>
+    <circle cx="980" cy="120" r="3" opacity="0.8"/>
+    <circle cx="1060" cy="210" r="4" opacity="0.9" filter="url(#glow)"/>
+    <circle cx="940" cy="280" r="3" opacity="0.7"/>
+    <circle cx="840" cy="190" r="2.5" opacity="0.6"/>
+    <circle cx="740" cy="240" r="2" opacity="0.5"/>
+    <circle cx="1080" cy="350" r="3" opacity="0.7"/>
+  </g>
+
+  <!-- Browser Frame Wrapper -->
+  <g transform="translate(40, 25)">
+    <!-- Browser Top Bar -->
+    <rect width="1120" height="38" rx="10" fill="#0A1728" stroke="#1E3A5F" stroke-width="1"/>
+    <!-- Controls -->
+    <circle cx="24" cy="19" r="6" fill="#EF4444" opacity="0.85"/>
+    <circle cx="44" cy="19" r="6" fill="#F59E0B" opacity="0.85"/>
+    <circle cx="64" cy="19" r="6" fill="#10B981" opacity="0.85"/>
+    <!-- URL Pill -->
+    <rect x="360" y="8" width="400" height="22" rx="11" fill="#050B14" stroke="#1E3A5F" stroke-width="0.8"/>
+    <text x="560" y="23" fill="#64748B" font-family="-apple-system, system-ui, sans-serif" font-size="11" text-anchor="middle">🔒 https://admission.scist.edu.cn</text>
+
+    <!-- Browser Inner Canvas -->
+    <rect y="38" width="1120" height="552" fill="#050B14" stroke="#1E3A5F" stroke-width="1"/>
+
+    <!-- Navbar -->
+    <rect y="38" width="1120" height="60" fill="#0A1728" opacity="0.85" stroke-bottom="#1E3A5F"/>
+    <line x1="0" y1="98" x2="1120" y2="98" stroke="#1E3A5F" stroke-opacity="0.6"/>
+
+    <!-- Logo -->
+    <g transform="translate(30, 48)">
+      <rect width="40" height="40" rx="8" fill="#0D2039" stroke="#00F2FE" stroke-width="1.5"/>
+      <circle cx="20" cy="20" r="6" fill="none" stroke="#00F2FE" stroke-width="2"/>
+      <path d="M20 7v4M20 29v4M7 20h4M29 20h4" stroke="#00F2FE" stroke-width="2" stroke-linecap="round"/>
+      <text x="50" y="20" fill="#FFFFFF" font-family="-apple-system, system-ui, sans-serif" font-size="16" font-weight="700">星渊科技大学</text>
+      <rect x="156" y="8" width="42" height="16" rx="4" fill="#00F2FE" fill-opacity="0.15" stroke="#00F2FE" stroke-width="0.8"/>
+      <text x="177" y="20" fill="#00F2FE" font-family="monospace" font-size="9" font-weight="700" text-anchor="middle">SCIST</text>
+      <text x="50" y="34" fill="#64748B" font-family="-apple-system, system-ui, sans-serif" font-size="9" letter-spacing="1">STARCORE INSTITUTE OF SCIENCE &amp; TECH</text>
+    </g>
+
+    <!-- Nav Links -->
+    <g transform="translate(490, 72)" fill="#94A3B8" font-family="-apple-system, system-ui, sans-serif" font-size="12" font-weight="500">
+      <text x="0" y="0" fill="#00F2FE" font-weight="600">首页</text>
+      <text x="50" y="0">分数线速查</text>
+      <text x="135" y="0">前沿学科与专业</text>
+      <text x="245" y="0">校园全景</text>
+      <text x="315" y="0">招考动态</text>
+      <text x="385" y="0">报考指南</text>
+    </g>
+
+    <!-- Search + CTA -->
+    <g transform="translate(940, 52)">
+      <rect width="145" height="32" rx="8" fill="url(#cyanGrad)"/>
+      <text x="72" y="21" fill="#050B14" font-family="-apple-system, system-ui, sans-serif" font-size="12" font-weight="700" text-anchor="middle">网上报考系统 ↗</text>
+    </g>
+
+    <!-- Hero Content -->
+    <!-- Pill Badge -->
+    <g transform="translate(560, 142)">
+      <rect x="-180" y="0" width="360" height="26" rx="13" fill="#0D2039" stroke="#00F2FE" stroke-opacity="0.35"/>
+      <circle cx="-162" cy="13" r="3.5" fill="#00F2FE" filter="url(#glow)"/>
+      <text x="5" y="17" fill="#38BDF8" font-family="-apple-system, system-ui, sans-serif" font-size="11" font-weight="500" text-anchor="middle">国家级量子智能与深空工程拔尖基地 · 2026招生开启</text>
+    </g>
+
+    <!-- Main Title -->
+    <text x="560" y="222" font-family="-apple-system, system-ui, sans-serif" font-size="44" font-weight="900" text-anchor="middle" letter-spacing="2">
+      <tspan fill="#FFFFFF">格物求理 </tspan>
+      <tspan fill="url(#cyanGrad)" filter="url(#glow)">叩问苍穹</tspan>
+    </text>
+
+    <!-- Subtitle -->
+    <text x="560" y="260" fill="#94A3B8" font-family="-apple-system, system-ui, sans-serif" font-size="13.5" font-weight="300" text-anchor="middle">
+      深入量子计算、受控聚变与深空探测前线，打破传统学科藩篱，书写属于中国青年科学家的纪元
+    </text>
+
+    <!-- CTA Buttons in Hero -->
+    <g transform="translate(560, 290)">
+      <rect x="-170" y="0" width="160" height="38" rx="10" fill="url(#cyanGrad)"/>
+      <text x="-90" y="24" fill="#050B14" font-family="-apple-system, system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">高考志愿预选模拟</text>
+
+      <rect x="10" y="0" width="160" height="38" rx="10" fill="#0D2039" stroke="#334155" stroke-width="1"/>
+      <text x="90" y="24" fill="#E2E8F0" font-family="-apple-system, system-ui, sans-serif" font-size="13" font-weight="500" text-anchor="middle">探秘前沿专业体系 →</text>
+    </g>
+
+    <!-- 4 Metric Cards -->
+    <g transform="translate(80, 365)">
+      <!-- Card 1 -->
+      <g transform="translate(0, 0)">
+        <rect width="215" height="110" rx="12" fill="url(#cardGrad)" stroke="#00F2FE" stroke-opacity="0.3" stroke-width="1"/>
+        <line x1="20" y1="0" x2="195" y2="0" stroke="#00F2FE" stroke-width="3"/>
+        <text x="25" y="48" fill="#FFFFFF" font-family="-apple-system, system-ui, sans-serif" font-size="30" font-weight="800">18<tspan fill="#00F2FE">+</tspan></text>
+        <text x="25" y="78" fill="#94A3B8" font-family="-apple-system, system-ui, sans-serif" font-size="11" font-weight="500">国家级重点实验室/中心</text>
+        <text x="25" y="94" fill="#475569" font-family="-apple-system, system-ui, sans-serif" font-size="9">量子·深空·聚变战略重器</text>
+      </g>
+      <!-- Card 2 -->
+      <g transform="translate(245, 0)">
+        <rect width="215" height="110" rx="12" fill="url(#cardGrad)" stroke="#38BDF8" stroke-opacity="0.3" stroke-width="1"/>
+        <line x1="20" y1="0" x2="195" y2="0" stroke="#38BDF8" stroke-width="3"/>
+        <text x="25" y="48" fill="#FFFFFF" font-family="-apple-system, system-ui, sans-serif" font-size="30" font-weight="800">42<tspan fill="#38BDF8" font-size="20"> 位</tspan></text>
+        <text x="25" y="78" fill="#94A3B8" font-family="-apple-system, system-ui, sans-serif" font-size="11" font-weight="500">两院院士与领军特聘导师</text>
+        <text x="25" y="94" fill="#475569" font-family="-apple-system, system-ui, sans-serif" font-size="9">全员本科生导师制带教</text>
+      </g>
+      <!-- Card 3 -->
+      <g transform="translate(490, 0)">
+        <rect width="215" height="110" rx="12" fill="url(#cardGrad)" stroke="#2563EB" stroke-opacity="0.3" stroke-width="1"/>
+        <line x1="20" y1="0" x2="195" y2="0" stroke="#2563EB" stroke-width="3"/>
+        <text x="25" y="48" fill="#FFFFFF" font-family="-apple-system, system-ui, sans-serif" font-size="30" font-weight="800">86.4<tspan fill="#60A5FA" font-size="20">%</tspan></text>
+        <text x="25" y="78" fill="#94A3B8" font-family="-apple-system, system-ui, sans-serif" font-size="11" font-weight="500">本科毕业生直博/硕深造率</text>
+        <text x="25" y="94" fill="#475569" font-family="-apple-system, system-ui, sans-serif" font-size="9">1+3+X 贯通免分流通道</text>
+      </g>
+      <!-- Card 4 -->
+      <g transform="translate(735, 0)">
+        <rect width="215" height="110" rx="12" fill="url(#cardGrad)" stroke="#10B981" stroke-opacity="0.3" stroke-width="1"/>
+        <line x1="20" y1="0" x2="195" y2="0" stroke="#10B981" stroke-width="3"/>
+        <text x="25" y="48" fill="#FFFFFF" font-family="-apple-system, system-ui, sans-serif" font-size="30" font-weight="800">320<tspan fill="#10B981">+</tspan></text>
+        <text x="25" y="78" fill="#94A3B8" font-family="-apple-system, system-ui, sans-serif" font-size="11" font-weight="500">年均 CNS 及顶刊顶会论文</text>
+        <text x="25" y="94" fill="#475569" font-family="-apple-system, system-ui, sans-serif" font-size="9">本科生以一作频登顶刊</text>
+      </g>
+    </g>
+
+    <!-- Bottom Status Strip -->
+    <g transform="translate(0, 520)">
+      <line x1="0" y1="0" x2="1120" y2="0" stroke="#1E3A5F" stroke-opacity="0.4"/>
+      <circle cx="40" cy="16" r="4" fill="#10B981"/>
+      <text x="52" y="20" fill="#64748B" font-family="-apple-system, system-ui, sans-serif" font-size="10">阳光高考数据直连认证 · 全国多省份实时联动 · 零门槛自由转专业 98.7% 成功率</text>
+    </g>
+  </g>
+</svg>
