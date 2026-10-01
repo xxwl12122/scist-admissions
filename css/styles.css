@@ -1,0 +1,401 @@
+/**
+ * styles.css — 星渊科技大学招生门户 全站自定义样式（升级版）
+ */
+
+/* ══════════════════════════════════════════════════════════
+   字体导入（本地备用回退）
+══════════════════════════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap');
+
+/* ══════════════════════════════════════════════════════════
+   CSS 变量
+══════════════════════════════════════════════════════════ */
+:root {
+  --brand-darkest: #050B14;
+  --brand-navy:    #0A1728;
+  --brand-card:    #0D2039;
+  --brand-cyan:    #00F2FE;
+  --brand-electric:#4FACFE;
+  --brand-blue:    #2563EB;
+  --brand-accent:  #38BDF8;
+}
+
+/* ══════════════════════════════════════════════════════════
+   全局重置 & 基础
+══════════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--brand-darkest);
+  color: #e2e8f0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--brand-cyan);
+  color: var(--brand-darkest);
+}
+
+/* ══════════════════════════════════════════════════════════
+   滚动条
+══════════════════════════════════════════════════════════ */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #050b14; }
+::-webkit-scrollbar-thumb { background: #1e3a5f; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #00f2fe; }
+
+/* ══════════════════════════════════════════════════════════
+   滚动进度条
+══════════════════════════════════════════════════════════ */
+#scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(to right, #00F2FE, #4FACFE, #2563EB);
+  z-index: 9999;
+  transition: width 0.1s linear;
+  border-radius: 0 9999px 9999px 0;
+  box-shadow: 0 0 10px rgba(0, 242, 254, 0.6);
+}
+
+/* ══════════════════════════════════════════════════════════
+   玻璃态组件
+══════════════════════════════════════════════════════════ */
+.glass-nav {
+  background: rgba(10, 23, 40, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: box-shadow 0.3s ease;
+}
+
+.glass-card {
+  background: rgba(13, 32, 57, 0.7);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(0, 242, 254, 0.35);
+  box-shadow: 0 12px 40px -12px rgba(0, 242, 254, 0.15), 0 0 0 1px rgba(0,242,254,0.05);
+}
+
+.glass-card-interactive {
+  background: linear-gradient(135deg, rgba(13, 32, 57, 0.85) 0%, rgba(9, 21, 38, 0.95) 100%);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(56, 189, 248, 0.18);
+}
+
+/* ══════════════════════════════════════════════════════════
+   发光文字 & 渐变
+══════════════════════════════════════════════════════════ */
+.glow-cyan {
+  text-shadow: 0 0 32px rgba(0, 242, 254, 0.55), 0 0 64px rgba(0, 242, 254, 0.25);
+}
+
+.gradient-text-cyan {
+  background: linear-gradient(135deg, #00F2FE 0%, #38BDF8 50%, #4FACFE 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ══════════════════════════════════════════════════════════
+   渐变按钮
+══════════════════════════════════════════════════════════ */
+.gradient-border-btn {
+  background: linear-gradient(135deg, #00F2FE 0%, #4FACFE 100%);
+  box-shadow: 0 0 18px rgba(0, 242, 254, 0.3), 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+.gradient-border-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.gradient-border-btn:hover::after { opacity: 1; }
+.gradient-border-btn:hover {
+  box-shadow: 0 0 28px rgba(0, 242, 254, 0.55), 0 6px 20px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+}
+.gradient-border-btn:active { transform: translateY(0); }
+
+/* ══════════════════════════════════════════════════════════
+   搜索弹窗
+══════════════════════════════════════════════════════════ */
+#search-modal {
+  animation: fadeInModal 0.18s ease;
+}
+#search-modal .search-box {
+  animation: slideDownModal 0.22s cubic-bezier(0.16,1,0.3,1);
+}
+@keyframes fadeInModal {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideDownModal {
+  from { transform: translateY(-20px) scale(0.97); opacity: 0; }
+  to   { transform: translateY(0)     scale(1);    opacity: 1; }
+}
+
+.search-result-item {
+  transition: background 0.15s ease;
+}
+
+/* ══════════════════════════════════════════════════════════
+   Bot 弹窗动画
+══════════════════════════════════════════════════════════ */
+#bot-modal {
+  animation: botSlideIn 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes botSlideIn {
+  from { transform: translateY(20px) scale(0.95); opacity: 0; }
+  to   { transform: translateY(0)    scale(1);    opacity: 1; }
+}
+
+.msg-enter {
+  animation: msgEnter 0.25s ease;
+}
+@keyframes msgEnter {
+  from { transform: translateY(8px); opacity: 0; }
+  to   { transform: translateY(0);   opacity: 1; }
+}
+
+.bot-card-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.6875rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 0.625rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-weight: 500;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+.bot-card-btn:active {
+  transform: scale(0.96);
+}
+
+/* ══════════════════════════════════════════════════════════
+   专业卡片悬浮
+══════════════════════════════════════════════════════════ */
+.major-item {
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+}
+.major-item:hover {
+  transform: translateY(-6px);
+}
+.major-item.hidden {
+  display: none;
+}
+
+/* ══════════════════════════════════════════════════════════
+   校园图鉴卡片
+══════════════════════════════════════════════════════════ */
+.campus-card {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.campus-card:hover img {
+  transform: scale(1.08);
+}
+.campus-card img {
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ══════════════════════════════════════════════════════════
+   灯箱
+══════════════════════════════════════════════════════════ */
+#image-lightbox-modal {
+  animation: fadeInModal 0.2s ease;
+}
+#image-lightbox-modal .lightbox-content {
+  animation: slideDownModal 0.25s cubic-bezier(0.16,1,0.3,1);
+}
+.lightbox-nav-btn {
+  transition: background 0.2s, opacity 0.2s;
+}
+.lightbox-nav-btn:hover { background: rgba(0, 242, 254, 0.15); }
+
+/* ══════════════════════════════════════════════════════════
+   FAQ 手风琴
+══════════════════════════════════════════════════════════ */
+.faq-content {
+  animation: faqSlide 0.25s ease;
+}
+@keyframes faqSlide {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.faq-item {
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* ══════════════════════════════════════════════════════════
+   数据表格行入场
+══════════════════════════════════════════════════════════ */
+@keyframes rowFadeIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.animate-row-in {
+  animation: rowFadeIn 0.3s ease both;
+}
+
+/* ══════════════════════════════════════════════════════════
+   Toast 通知
+══════════════════════════════════════════════════════════ */
+#toast-container {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  z-index: 9998;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  pointer-events: none;
+}
+#toast-container > * {
+  pointer-events: auto;
+}
+
+/* ══════════════════════════════════════════════════════════
+   返回顶部按钮
+══════════════════════════════════════════════════════════ */
+#back-to-top {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+#back-to-top:hover {
+  transform: translateY(-3px);
+}
+
+/* ══════════════════════════════════════════════════════════
+   出场动画
+══════════════════════════════════════════════════════════ */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-in-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ══════════════════════════════════════════════════════════
+   申请表弹窗
+══════════════════════════════════════════════════════════ */
+#apply-modal {
+  animation: fadeInModal 0.2s ease;
+}
+#apply-modal .apply-box {
+  animation: slideDownModal 0.28s cubic-bezier(0.16,1,0.3,1);
+}
+
+.form-input {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(71, 85, 105, 0.8);
+  color: #f1f5f9;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-input:focus {
+  outline: none;
+  border-color: #00F2FE;
+  box-shadow: 0 0 0 3px rgba(0, 242, 254, 0.1);
+}
+.form-input::placeholder { color: #475569; }
+
+/* ══════════════════════════════════════════════════════════
+   数字脉冲
+══════════════════════════════════════════════════════════ */
+@keyframes numberPop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+.stat-number.done {
+  animation: numberPop 0.3s ease;
+}
+
+/* ══════════════════════════════════════════════════════════
+   统计卡片顶部边框闪光
+══════════════════════════════════════════════════════════ */
+.stat-card {
+  position: relative;
+  overflow: hidden;
+}
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #00F2FE, transparent);
+  animation: shimmer 3s infinite;
+}
+@keyframes shimmer {
+  0%   { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   加载骨架屏
+══════════════════════════════════════════════════════════ */
+.skeleton {
+  background: linear-gradient(90deg, #0d2039 25%, #132b4c 50%, #0d2039 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+@keyframes skeleton-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   移动端适配增强
+══════════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  #bot-modal {
+    bottom: 5.5rem;
+    right: 0.75rem;
+    width: calc(100vw - 1.5rem);
+    height: 72vh;
+  }
+  .glass-card { backdrop-filter: blur(8px); }
+  .gradient-border-btn { min-height: 44px; }
+  #scroll-progress-bar { height: 2px; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   打印样式
+══════════════════════════════════════════════════════════ */
+@media print {
+  .glass-nav, #bot-toggle-btn, #back-to-top, #toast-container { display: none !important; }
+  body { background: white; color: black; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   过渡优化（减少用户的动效偏好）
+══════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

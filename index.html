@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>星渊科技大学 (SCIST) | 本科招生官方门户</title>
+  <meta name="description" content="星渊科技大学本科招生官方网站，提供历年各省录取分数线与位次速查、前沿学科介绍、强基计划、少年班简章及智能报考咨询。">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%200%22%20100%20100%22><text y=%22.9em%22 font-size=%2290%22>🌌</text></svg>">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              darkest: '#050B14',
+              navy: '#0A1728',
+              card: '#0D2039',
+              lightcard: '#132B4C',
+              cyan: '#00F2FE',
+              electric: '#4FACFE',
+              blue: '#2563EB',
+              accent: '#38BDF8',
+              glow: '#00E5FF'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            display: ['Outfit', 'Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body class="bg-brand-darkest text-slate-100 font-sans selection:bg-brand-cyan selection:text-brand-darkest antialiased overflow-x-hidden min-h-screen">
+
+  <!-- 顶部滚动进度指示条 -->
+  <div id="scroll-progress-bar"></div>
+
+  <!-- 顶部重要通知公告条 -->
+  <div class="bg-gradient-to-r from-blue-950 via-slate-900 to-cyan-950 border-b border-cyan-500/20 py-2 px-4 text-xs font-medium tracking-wide">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center space-x-2 text-cyan-300">
+        <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 animate-pulse">
+          HOT
+        </span>
+        <span>2026年本科生“星火计划”拔尖创新人才选拔简章与自主招生报录系统正式开放</span>
+      </div>
+      <div class="flex items-center space-x-4 text-slate-400">
+        <a href="#scores" class="hover:text-cyan-300 transition-colors flex items-center gap-1">
+          <i data-lucide="bar-chart-2" class="w-3.5 h-3.5"></i> 历年分数速查
+        </a>
+        <span class="text-slate-600">|</span>
+        <button id="header-bot-trigger" class="hover:text-cyan-300 transition-colors flex items-center gap-1 text-cyan-400">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> AI 报考咨询
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 导航栏 (Sticky Glassmorphic Header) -->
+  <header class="sticky top-0 z-40 glass-nav transition-all duration-300" id="main-header">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo & University Emblem -->
+        <a href="#" class="flex items-center space-x-3.5 group">
+          <div class="relative w-12 h-12 rounded-xl bg-gradient-to-tr from-brand-blue via-brand-cyan to-white p-[2px] shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform duration-300">
+            <div class="w-full h-full bg-brand-navy rounded-[10px] flex items-center justify-center overflow-hidden">
+              <svg class="w-7 h-7 text-cyan-400 transition-transform group-hover:rotate-45 duration-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M12 2v3m0 14v3M2 12h3m14 0h3m-3.5-6.5l-2.1 2.1m-8.8 8.8l-2.1 2.1m0-13l2.1 2.1m8.8 8.8l2.1 2.1"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <div class="flex items-center space-x-2">
+              <span class="text-xl font-bold tracking-tight text-white font-display">星渊科技大学</span>
+              <span class="text-[10px] px-1.5 py-0.5 rounded bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 font-mono tracking-wider">SCIST</span>
+            </div>
+            <span class="text-[11px] text-slate-400 font-light tracking-widest uppercase">StarCore Institute of Science & Tech · 本科招生</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Items -->
+        <nav class="hidden lg:flex items-center space-x-1 font-medium text-sm text-slate-300">
+          <a href="#hero" class="px-3.5 py-2 rounded-lg text-cyan-400 bg-cyan-500/10 transition-colors">首页</a>
+          <a href="#scores" class="px-3.5 py-2 rounded-lg hover:text-white hover:bg-slate-800/60 transition-colors">分数线速查</a>
+          <a href="#majors" class="px-3.5 py-2 rounded-lg hover:text-white hover:bg-slate-800/60 transition-colors">前沿学科与专业</a>
+          <a href="#campus" class="px-3.5 py-2 rounded-lg hover:text-white hover:bg-slate-800/60 transition-colors">校园全景</a>
+          <a href="#news" class="px-3.5 py-2 rounded-lg hover:text-white hover:bg-slate-800/60 transition-colors">招考动态</a>
+          <a href="#faq" class="px-3.5 py-2 rounded-lg hover:text-white hover:bg-slate-800/60 transition-colors">报考指南</a>
+        </nav>
+
+        <!-- Right Action CTAs -->
+        <div class="hidden lg:flex items-center space-x-3">
+          <!-- Search trigger -->
+          <button data-search-trigger class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900/80 border border-slate-700/60 text-slate-400 hover:text-white hover:border-cyan-400/50 transition-colors text-xs" title="快速搜索 (Ctrl+K)">
+            <i data-lucide="search" class="w-3.5 h-3.5 text-cyan-400"></i>
+            <span>搜索全站</span>
+            <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-[10px] text-slate-400 font-mono">Ctrl+K</kbd>
+          </button>
+          <!-- Apply Now Modal Trigger -->
+          <button data-apply-trigger class="gradient-border-btn px-5 py-2 rounded-xl text-brand-darkest font-semibold text-sm flex items-center space-x-1.5 shadow-md">
+            <i data-lucide="send" class="w-4 h-4"></i>
+            <span>网上报考登记</span>
+          </button>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <div class="flex lg:hidden items-center space-x-2">
+          <button data-search-trigger class="p-2.5 rounded-xl bg-slate-800/70 text-slate-300 hover:text-white border border-slate-700/60">
+            <i data-lucide="search" class="w-5 h-5"></i>
+          </button>
+          <button id="mobile-menu-btn" class="p-2.5 rounded-xl bg-slate-800/70 text-slate-300 hover:text-white border border-slate-700/60">
+            <i data-lucide="menu" id="menu-icon-open" class="w-6 h-6"></i>
+            <i data-lucide="x" id="menu-icon-close" class="w-6 h-6 hidden"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Dropdown -->
+    <div id="mobile-menu" class="hidden lg:hidden border-b border-slate-800 bg-brand-navy/95 backdrop-blur-xl px-4 pt-3 pb-6 space-y-2">
+      <a href="#hero" class="block px-3 py-2.5 rounded-lg text-cyan-400 font-medium bg-cyan-500/10">首页</a>
+      <a href="#scores" class="block px-3 py-2.5 rounded-lg text-slate-200 hover:bg-slate-800/60 font-medium">分数线与名额速查</a>
+      <a href="#majors" class="block px-3 py-2.5 rounded-lg text-slate-200 hover:bg-slate-800/60 font-medium">前沿学科与专业</a>
+      <a href="#campus" class="block px-3 py-2.5 rounded-lg text-slate-200 hover:bg-slate-800/60 font-medium">校园全景生活</a>
+      <a href="#news" class="block px-3 py-2.5 rounded-lg text-slate-200 hover:bg-slate-800/60 font-medium">招考焦点动态</a>
+      <a href="#faq" class="block px-3 py-2.5 rounded-lg text-slate-200 hover:bg-slate-800/60 font-medium">录取疑问速答</a>
+      <div class="pt-3">
+        <button data-apply-trigger class="w-full gradient-border-btn py-3 rounded-lg text-brand-darkest font-bold text-center block">
+          网上报考与模拟填报
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 英雄区 (Hero Section) -->
+  <section id="hero" class="relative min-h-[92vh] flex items-center justify-center overflow-hidden py-16 md:py-24">
+    <!-- Interactive Background Canvas (particle mesh network) -->
+    <canvas id="hero-canvas" class="absolute inset-0 w-full h-full z-0 opacity-45"></canvas>
+
+    <!-- Radial Glow overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-brand-darkest/40 via-transparent to-brand-darkest z-0 pointer-events-none"></div>
+    <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-gradient-to-r from-cyan-500/20 to-blue-600/20 blur-[130px] rounded-full pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+      
+      <!-- Top Tag Badge -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-cyan-500/30 text-xs sm:text-sm text-cyan-300 mb-8 backdrop-blur-md shadow-inner">
+        <span class="flex h-2 w-2 relative">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+        </span>
+        国家级量子智能与深空工程拔尖基地 · 2026年本科招生大幕开启
+      </div>
+
+      <!-- University Inspiring Slogan -->
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-tight md:leading-none max-w-5xl font-display mb-6">
+        格物求理 <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan via-sky-300 to-brand-electric glow-cyan">叩问苍穹</span>
+      </h1>
+      
+      <p class="text-lg sm:text-xl text-slate-300 font-light max-w-3xl leading-relaxed mb-10">
+        在星渊科技大学，你将与全球顶尖导师同行，深入量子计算、受控聚变与深空探测前线。
+        打破传统学科藩篱，书写属于中国青年科学家的纪元。
+      </p>
+
+      <!-- Action Button Group -->
+      <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto justify-center mb-16">
+        <a href="#scores" class="w-full sm:w-auto gradient-border-btn px-8 py-3.5 rounded-xl text-brand-darkest font-bold text-base flex items-center justify-center space-x-2">
+          <i data-lucide="compass" class="w-5 h-5"></i>
+          <span>高考志愿预选模拟</span>
+        </a>
+        <a href="#majors" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 text-white font-medium text-base border border-slate-700/60 backdrop-blur-md transition-all flex items-center justify-center space-x-2 group">
+          <span>探秘前沿专业体系</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+        </a>
+      </div>
+
+      <!-- Live University Stats Counter Strip -->
+      <div class="w-full grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 max-w-5xl">
+        <div class="glass-card stat-card p-5 rounded-2xl text-center border-t-2 border-t-cyan-400">
+          <div class="text-3xl sm:text-4xl font-extrabold text-white font-display flex items-center justify-center">
+            <span class="stat-number" data-target="18">0</span><span class="text-cyan-400">+</span>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-400 mt-1 font-medium">国家级重点实验室/中心</p>
+        </div>
+        <div class="glass-card stat-card p-5 rounded-2xl text-center border-t-2 border-t-sky-400">
+          <div class="text-3xl sm:text-4xl font-extrabold text-white font-display flex items-center justify-center">
+            <span class="stat-number" data-target="42">0</span><span class="text-sky-400">位</span>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-400 mt-1 font-medium">两院院士与领军特聘导师</p>
+        </div>
+        <div class="glass-card stat-card p-5 rounded-2xl text-center border-t-2 border-t-blue-400">
+          <div class="text-3xl sm:text-4xl font-extrabold text-white font-display flex items-center justify-center">
+            <span class="stat-number" data-target="86">0</span><span class="text-blue-400">.4%</span>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-400 mt-1 font-medium">本科毕业生直博/硕深造率</p>
+        </div>
+        <div class="glass-card stat-card p-5 rounded-2xl text-center border-t-2 border-t-teal-400">
+          <div class="text-3xl sm:text-4xl font-extrabold text-white font-display flex items-center justify-center">
+            <span class="stat-number" data-target="320">0</span><span class="text-teal-400">+</span>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-400 mt-1 font-medium">年均 CNS 及顶刊顶会论文</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 分数线大数据检索模块 -->
+  <section id="scores" class="py-20 relative bg-brand-navy/30 border-y border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+        <div>
+          <div class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-cyan-400 mb-2">
+            <i data-lucide="database" class="w-4 h-4"></i> Admissions Cutoff Big Data
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white font-display">智能招生与历年分数线速查</h2>
+          <p class="text-slate-400 mt-2 text-sm sm:text-base">实时联动多省份各专业近年投档线与录取位次，支持按年份、科类综合筛选</p>
+        </div>
+        <div class="flex items-center space-x-2 text-xs text-slate-400 bg-slate-900/80 border border-slate-700/60 px-3.5 py-2 rounded-xl self-start md:self-auto shadow-inner">
+          <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+          <span>教育部阳光高考信息平台认证同步数据源</span>
+        </div>
+      </div>
+
+      <!-- Filter Controls Panel -->
+      <div class="glass-card p-6 rounded-2xl mb-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          
+          <!-- Province Selector -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">招生生源省份</label>
+            <div class="relative">
+              <select id="province-select" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 appearance-none cursor-pointer">
+                <option value="all">全国所有省份 (全量数据)</option>
+                <option value="北京" selected>北京 (新高考选科不限/物理+化学)</option>
+                <option value="浙江">浙江 (高考综合改革试验区)</option>
+                <option value="安徽">安徽 (物理类主选)</option>
+                <option value="广东">广东 (物理+化学必选)</option>
+                <option value="四川">四川 (理工一本首选)</option>
+                <option value="江苏">江苏 (物理化学双选)</option>
+              </select>
+              <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 absolute right-3.5 top-3.5 pointer-events-none"></i>
+            </div>
+          </div>
+
+          <!-- Admission Type -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">科类 / 选考科目要求</label>
+            <div class="relative">
+              <select id="stream-select" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 appearance-none cursor-pointer">
+                <option value="all">全部类型 (物理类/综合)</option>
+                <option value="物化双选">物理 + 化学必选 (核心工科)</option>
+                <option value="综合改革">综合改革 (选考任意理科)</option>
+                <option value="强基拔尖">强基计划 (高水平基础科学)</option>
+              </select>
+              <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 absolute right-3.5 top-3.5 pointer-events-none"></i>
+            </div>
+          </div>
+
+          <!-- Academic Year -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">年份查看基准</label>
+            <div class="relative">
+              <select id="year-select" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400 appearance-none cursor-pointer">
+                <option value="2025" selected>2025年 (最新投档统计)</option>
+                <option value="2024">2024年 (往期参照)</option>
+                <option value="2023">2023年 (三年均线)</option>
+              </select>
+              <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 absolute right-3.5 top-3.5 pointer-events-none"></i>
+            </div>
+          </div>
+
+          <!-- Search Keyword -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">专业名称检索</label>
+            <div class="relative">
+              <input type="text" id="score-search" placeholder="输入如：量子、人工智能、深空..." class="w-full bg-slate-900/90 border border-slate-700 rounded-xl pl-10 pr-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400">
+              <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5"></i>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Dynamic Data Table Card -->
+      <div class="glass-card rounded-2xl overflow-hidden border border-slate-800">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b border-slate-800 bg-slate-900/80 text-xs font-bold uppercase text-slate-400 tracking-wider">
+                <th class="py-4 px-5">招生专业大类 / 培养计划</th>
+                <th class="py-4 px-5">所属书院 / 学院</th>
+                <th class="py-4 px-5">生源省份</th>
+                <th class="py-4 px-5">选考科目</th>
+                <th class="py-4 px-5 text-center">最低投档线</th>
+                <th class="py-4 px-5 text-center">全省对应位次</th>
+                <th class="py-4 px-5 text-center">拟招名额</th>
+                <th class="py-4 px-5 text-center">操作</th>
+              </tr>
+            </thead>
+            <tbody id="scores-table-body" class="divide-y divide-slate-800/60 text-sm">
+              <!-- Dynamically Populated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+        
+        <!-- Empty State -->
+        <div id="no-scores-found" class="hidden py-16 text-center">
+          <i data-lucide="file-question" class="w-12 h-12 text-slate-600 mx-auto mb-3"></i>
+          <p class="text-slate-400 text-base font-medium">未查询到符合当前筛选条件的专业录取数据</p>
+          <p class="text-slate-500 text-xs mt-1">请尝试放宽筛选省份或重置搜索词</p>
+        </div>
+
+        <!-- Table Footer / Quick Tips -->
+        <div class="px-6 py-4 bg-slate-900/40 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-3">
+          <div class="flex items-center space-x-2">
+            <span class="w-2 h-2 rounded-full bg-cyan-400 inline-block animate-ping"></span>
+            <span>注：所有专业实行大类培养，大一学年末可在全校范围内自由重选专业，零门槛、不设绩点壁垒。</span>
+          </div>
+          <div class="text-cyan-400 font-mono font-medium" id="results-count">正在加载招生大数据…</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 前沿学科与拔尖专业模块 -->
+  <section id="majors" class="py-24 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-cyan-400 mb-3">
+          <i data-lucide="cpu" class="w-4 h-4"></i> Frontier Disciplines & Honors Colleges
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-bold text-white font-display tracking-tight">硬核前沿学院与拔尖专业</h2>
+        <p class="text-slate-300 mt-4 text-base">围绕国家重大前沿战略，推行本硕博贯通制与导师制，让本科生从第一天起接触全球顶尖科研装置</p>
+      </div>
+
+      <!-- Major Filter Tabs -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-12" id="major-category-tabs">
+        <button class="major-tab-btn active px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-cyan-500 text-brand-darkest shadow-lg shadow-cyan-500/20" data-cat="all">
+          全览学科 (All)
+        </button>
+        <button class="major-tab-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-slate-800/80 text-slate-300 hover:text-white border border-slate-700/60" data-cat="quantum">
+          量子信息与智能计算
+        </button>
+        <button class="major-tab-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-slate-800/80 text-slate-300 hover:text-white border border-slate-700/60" data-cat="space">
+          深空探测与航空航天
+        </button>
+        <button class="major-tab-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-slate-800/80 text-slate-300 hover:text-white border border-slate-700/60" data-cat="bio">
+          脑科学与突触神经工程
+        </button>
+        <button class="major-tab-btn px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all bg-slate-800/80 text-slate-300 hover:text-white border border-slate-700/60" data-cat="energy">
+          可控核聚变与清洁能源
+        </button>
+      </div>
+
+      <!-- Majors Grid Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="majors-grid">
+        
+        <!-- Major Card 1 -->
+        <div class="major-item glass-card rounded-2xl p-7 relative flex flex-col justify-between group transition-all duration-300" data-cat="quantum">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="p-3 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-400/20 group-hover:scale-110 transition-transform">
+                <i data-lucide="binary" class="w-6 h-6"></i>
+              </span>
+              <span class="text-xs font-mono px-2.5 py-1 rounded bg-slate-800 text-cyan-300 border border-slate-700">少年班 / 钱学森力学班</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">量子计算与光量子信息科学</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+              以超导量子比特与光量子纠缠网络为核心，依托星渊国家超导量子实验室，本科阶段即可直接参与下一代百比特容错量子计算机算法研发。
+            </p>
+            <div class="space-y-2 mb-6">
+              <div class="text-xs flex items-center text-slate-300 gap-2">
+                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-cyan-400"></i>
+                <span>代表设施：72量子比特超导稀释制冷试验集群</span>
+              </div>
+              <div class="text-xs flex items-center text-slate-300 gap-2">
+                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-cyan-400"></i>
+                <span>深造去向：92% 直升本校顶尖量子研究院及海外名校</span>
+              </div>
+            </div>
+          </div>
+          <button class="open-major-modal-btn w-full py-2.5 px-4 rounded-xl bg-slate-800/90 hover:bg-cyan-500 hover:text-brand-darkest text-slate-200 text-xs font-semibold border border-slate-700 transition-all flex items-center justify-center gap-1.5"
+            data-title="量子计算与光量子信息科学"
+            data-college="严济慈物理英才书院"
+            data-tags="本硕博贯通,两院院士1对1导师,国家特大工程"
+            data-desc="本专业定位于培养具备从底层物理实现到高层量子算法体系架构全栈能力的未来科学家。大一开设《量子力学先修与几何基础》，大二全员进驻超导微纳加工中心与量子光学中心进行研讨型科研实验。毕业生在国际量子前沿领域具备碾压级的实操及理论造诣。">
+            <span>培养方案与名师阵容</span>
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+        <!-- Major Card 2 -->
+        <div class="major-item glass-card rounded-2xl p-7 relative flex flex-col justify-between group transition-all duration-300" data-cat="space">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="p-3 rounded-xl bg-sky-500/10 text-sky-400 border border-sky-400/20 group-hover:scale-110 transition-transform">
+                <i data-lucide="rocket" class="w-6 h-6"></i>
+              </span>
+              <span class="text-xs font-mono px-2.5 py-1 rounded bg-slate-800 text-sky-300 border border-slate-700">航天局战略合作</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">深空探测动力与小行星抓捕工程</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+              针对火星科考基地、近地小行星资源勘探与霍尔电推进发动机，联合国家深空科学探测实验室，培养跨行星工程领航者。
+            </p>
+            <div class="space-y-2 mb-6">
+              <div class="text-xs flex items-center text-slate-300 gap-2">
+                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-sky-400"></i>
+                <span>代表设施：高超声速风洞与等离子体推力测试靶场</span>
+              </div>
+              <div class="text-xs flex items-center text-slate-300 gap-2">
+                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-sky-400"></i>
+                <span>毕业保障：国家航天院所直聘优先签约权</span>
+              </div>
+            </div>
+          </div>
+          <button class="open-major-modal-btn w-full py-2.5 px-4 rounded-xl bg-slate-800/90 hover:bg-cyan-500 hover:text-brand-darkest text-slate-200 text-xs font-semibold border border-slate-700 transition-all flex items-center justify-center gap-1.5"
+            data-title="深空探测动力与小行星抓捕工程"
+            data-college="空天动力与微重力交叉学院"
+            data-tags="高精尖卓越计划,驻所联合培养,型号工程实战"
+            data-desc="融合现代力学、航天动力学、极端环境材料与空间自主导航。学生将在大三参与‘天穹一号’立方星的真实遥测与测控任务，所有核心技术课程均由国家总师级研究员亲自担纲授课。">
+            <span>培养方案与名师阵容</span>
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+        <!-- Major Card 3 -->
+        <div class="major-item glass-card rounded-2xl p-7 relative flex flex-col justify-between group transition-all duration-300" data-cat="bio">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="p-3 rounded-xl bg-purple-500/10 text-purple-400 border border-purple-400/20 group-hover:scale-110 transition-transform">
+                <i data-lucide="activity" class="w-6 h-6"></i>
+              </span>
+              <span class="text-xs font-mono px-2.5 py-1 rounded bg-slate-800 text-purple-300 border border-slate-700">新工科交叉前沿</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">突触仿生神经工程与脑机接口</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+              探索侵入式柔性脑机电极阵列与类脑计算芯片。将神经生物学、微纳制造与深度强化学习融为一体，攻克神经疾病逆转与心智增强。
+            </p>
+            <div class="space-y-2 mb-6">
+              <div class="text-xs flex items-center text-slate-300 gap-2">
+                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-purple-400"></i>
+                <span>代表设施：万通道高通量柔性脑机神经记录平台</span>
+              </div>
+              <div class="text-xs flex items-center text-slate-300 gap-2">
+                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-purple-400"></i>
+                <span>学术赋能：本科生平均以一作发表SCI顶刊1.2篇</span>
+              </div>
+            </div>
+          </div>
+          <button class="open-major-modal-btn w-full py-2.5 px-4 rounded-xl bg-slate-800/90 hover:bg-cyan-500 hover:text-brand-darkest text-slate-200 text-xs font-semibold border border-slate-700 transition-all flex items-center justify-center gap-1.5"
+            data-title="突触仿生神经工程与脑机接口"
+            data-college="生命科学与智能认知交叉学院"
+            data-tags="医工结合,类脑计算中心,硅谷与全球名校联培"
+            data-desc="该学科由国际知名神经电子科学家团队直接创立，配备全球首屈一指的双光子活体钙成像设备。学生可根据研究兴趣自由选取‘类脑架构芯片算法’或‘生物兼容神经电极’分支，为人类终极计算形态奠基。">
+            <span>培养方案与名师阵容</span>
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+        <!-- Major Card 4 -->
+        <div class="major-item glass-card rounded-2xl p-7 relative flex flex-col justify-between group transition-all duration-300" data-cat="energy">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="p-3 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-400/20 group-hover:scale-110 transition-transform">
+                <i data-lucide="flame" class="w-6 h-6"></i>
+              </span>
+              <span class="text-xs font-mono px-2.5 py-1 rounded bg-slate-800 text-emerald-300 border border-slate-700">终极能源国家战略</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">受控核聚变与高温超导材料</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+              以托卡马克“人造太阳”聚变装置为依托，深耕高温超导强磁场约束物理、极端热负荷壁材料与兆瓦级微波加热工程。
+            </p>
+            <div class="space-y-2 mb-6">
+              <div class="text-xs flex items-center text-slate-300 gap-2">
+                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                <span>代表设施：“天渊”稳态强磁场球形托卡马克装置</span>
+              </div>
+              <div class="text-xs flex items-center text-slate-300 gap-2">
+                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+                <span>国际合作：ITER 国际热核聚变实验堆直通通道</span>
+              </div>
+            </div>
+          </div>
+          <button class="open-major-modal-btn w-full py-2.5 px-4 rounded-xl bg-slate-800/90 hover:bg-cyan-500 hover:text-brand-darkest text-slate-200 text-xs font-semibold border border-slate-700 transition-all flex items-center justify-center gap-1.5"
+            data-title="受控核聚变与高温超导材料"
+            data-college="未来能源与等离子体物理研究院"
+            data-tags="终极能源先导专项,国际大科学装置,全额科研津贴"
+            data-desc="人类未来能源的掌舵手。本专业本科生直接享有驻站科研权限，亲身参与一亿度等离子体稳态放电实验。提供国际热核聚变实验组织的全额海外交流交换奖学金。">
+            <span>培养方案与名师阵容</span>
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+        <!-- Major Card 5 -->
+        <div class="major-item glass-card rounded-2xl p-7 relative flex flex-col justify-between group transition-all duration-300" data-cat="quantum">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="p-3 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-400/20 group-hover:scale-110 transition-transform">
+                <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+              </span>
+              <span class="text-xs font-mono px-2.5 py-1 rounded bg-slate-800 text-cyan-300 border border-slate-700">图灵荣誉班</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">通用人工智能与多模态世界模型</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+              突破大模型推理极限，探索物理约束下的自主具身智能与神经符号系统。全校配备千卡万核超算算力专属本科科研集群。
+            </p>
+            <div class="space-y-2 mb-6">
+              <div class="text-xs flex items-center text-slate-300 gap-2">
+                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-cyan-400"></i>
+                <span>专属算力：本科生每人享有独立高规格 GPU 算力卡槽</span>
+              </div>
+              <div class="text-xs flex items-center text-slate-300 gap-2">
+                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-cyan-400"></i>
+                <span>竞赛成就：ACM-ICPC全球总决赛连获冠亚季军</span>
+              </div>
+            </div>
+          </div>
+          <button class="open-major-modal-btn w-full py-2.5 px-4 rounded-xl bg-slate-800/90 hover:bg-cyan-500 hover:text-brand-darkest text-slate-200 text-xs font-semibold border border-slate-700 transition-all flex items-center justify-center gap-1.5"
+            data-title="通用人工智能与多模态世界模型"
+            data-college="图灵计算机科学学院"
+            data-tags="算力自由,千亿模型实训,国际顶级AI实验室直聘"
+            data-desc="课程全面对标 Stanford、MIT 最新前沿架构，涵盖具身机器人操控、神经隐式三维渲染、可解释数学推理大模型。配备业内顶级产业实践基地导师，大二暑期开启实景挑战项目。">
+            <span>培养方案与名师阵容</span>
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+        <!-- Major Card 6 -->
+        <div class="major-item glass-card rounded-2xl p-7 relative flex flex-col justify-between group transition-all duration-300" data-cat="space">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="p-3 rounded-xl bg-sky-500/10 text-sky-400 border border-sky-400/20 group-hover:scale-110 transition-transform">
+                <i data-lucide="telescope" class="w-6 h-6"></i>
+              </span>
+              <span class="text-xs font-mono px-2.5 py-1 rounded bg-slate-800 text-sky-300 border border-slate-700">天文学世界一流</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">天体物理学与引力波引力透镜观测</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+              联合国家天文台与FAST射电望远镜基地，聚焦暗物质粒子间接探测、黑洞吸积盘模拟与空间引力波空间阵列科学数据解算。
+            </p>
+            <div class="space-y-2 mb-6">
+              <div class="text-xs flex items-center text-slate-300 gap-2">
+                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-sky-400"></i>
+                <span>基地共享：拥有青海冷湖 2.5米 大视场巡天望远镜观测机时</span>
+              </div>
+              <div class="text-xs flex items-center text-slate-300 gap-2">
+                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-sky-400"></i>
+                <span>学术导师：包括多位引力波探测计划首席科学家</span>
+              </div>
+            </div>
+          </div>
+          <button class="open-major-modal-btn w-full py-2.5 px-4 rounded-xl bg-slate-800/90 hover:bg-cyan-500 hover:text-brand-darkest text-slate-200 text-xs font-semibold border border-slate-700 transition-all flex items-center justify-center gap-1.5"
+            data-title="天体物理学与引力波引力透镜观测"
+            data-college="天文与空间科学学院"
+            data-tags="大科学巡天装置,国际深空联盟,理论与观测双轨制"
+            data-desc="依托高海拔宇宙线观测站（LHAASO）与悟空号暗物质卫星核心科学团队，为学生提供直达宇宙深处的科研视野。在星空璀璨的高原观测基地开展真实科学巡天观测实战。">
+            <span>培养方案与名师阵容</span>
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 校园全维实景图鉴 -->
+  <section id="campus" class="py-24 relative bg-brand-navy/40 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+        <div>
+          <div class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-cyan-400 mb-2">
+            <i data-lucide="camera" class="w-4 h-4"></i> Campus Environments & Life
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white font-display">极客天国：校园全维实景图鉴</h2>
+          <p class="text-slate-400 mt-2 text-sm sm:text-base">从百亿级国家大科学重器，到全天候恒温静音未来极客寝室，为学术与生活赋能</p>
+        </div>
+        
+        <!-- Campus Gallery Filter Buttons -->
+        <div class="flex flex-wrap gap-2 text-xs font-medium">
+          <button class="campus-filter active px-4 py-2 rounded-xl bg-cyan-500 text-brand-darkest font-bold" data-cfilter="all">全部场景</button>
+          <button class="campus-filter px-4 py-2 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-slate-300 border border-slate-700" data-cfilter="lab">科研重器</button>
+          <button class="campus-filter px-4 py-2 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-slate-300 border border-slate-700" data-cfilter="living">极客生活</button>
+          <button class="campus-filter px-4 py-2 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-slate-300 border border-slate-700" data-cfilter="library">寰宇书院</button>
+        </div>
+      </div>
+
+      <!-- Campus Grid with Interactive Lightbox Triggers -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="campus-grid">
+        
+        <!-- Photo 1 -->
+        <div class="campus-card group relative h-72 md:h-80 rounded-2xl overflow-hidden cursor-pointer" data-cgroup="lab"
+             data-img="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=1200&q=80"
+             data-title="百比特超导量子中央洁净实验室"
+             data-caption="配备 Class 100 级无尘超净间与自主稀释制冷塔集群，本科生经安全考核后全天候刷卡入驻开展量子测控。">
+          <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=800&q=80" alt="百比特超导量子中央洁净实验室" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80';">
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-darkest via-brand-darkest/30 to-transparent"></div>
+          <div class="absolute bottom-5 left-5 right-5">
+            <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-cyan-500 text-brand-darkest font-bold uppercase">科研大科学设施</span>
+            <h4 class="text-lg font-bold text-white mt-1 group-hover:text-cyan-300 transition-colors">百比特超导量子中央洁净实验室</h4>
+            <p class="text-xs text-slate-300 line-clamp-1 mt-0.5">万级高真空与极低温量子态保持测试区</p>
+          </div>
+        </div>
+
+        <!-- Photo 2 -->
+        <div class="campus-card group relative h-72 md:h-80 rounded-2xl overflow-hidden cursor-pointer" data-cgroup="library"
+             data-img="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=1200&q=80"
+             data-title="寰宇星图全天候智联未来图书馆"
+             data-caption="藏书280万册，全馆配备沉浸式静音工作仓、3D数字全息古籍阅览台及 24小时 开放的深夜学术研讨沙龙。">
+          <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=800&q=80" alt="图书馆" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-darkest via-brand-darkest/30 to-transparent"></div>
+          <div class="absolute bottom-5 left-5 right-5">
+            <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-blue-500 text-white font-bold uppercase">知识中枢</span>
+            <h4 class="text-lg font-bold text-white mt-1 group-hover:text-cyan-300 transition-colors">寰宇星图全天候未来图书馆</h4>
+            <p class="text-xs text-slate-300 line-clamp-1 mt-0.5">24小时通宵学术研讨区与海量国际顶刊数据库</p>
+          </div>
+        </div>
+
+        <!-- Photo 3 -->
+        <div class="campus-card group relative h-72 md:h-80 rounded-2xl overflow-hidden cursor-pointer" data-cgroup="living"
+             data-img="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=1200&q=80"
+             data-title="书院制双人间极客生活公寓"
+             data-caption="配备独立卫浴、恒温新风系统、人体工学电动升降桌及每栋书院专属的创客研讨吧与星光咖啡厅。">
+          <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=800&q=80" alt="寝室公寓" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-darkest via-brand-darkest/30 to-transparent"></div>
+          <div class="absolute bottom-5 left-5 right-5">
+            <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-teal-500 text-brand-darkest font-bold uppercase">品质生活</span>
+            <h4 class="text-lg font-bold text-white mt-1 group-hover:text-cyan-300 transition-colors">书院制双人间极客生活公寓</h4>
+            <p class="text-xs text-slate-300 line-clamp-1 mt-0.5">全天候恒温新风与千兆对称光纤入户</p>
+          </div>
+        </div>
+
+        <!-- Photo 4 -->
+        <div class="campus-card group relative h-72 md:h-80 rounded-2xl overflow-hidden cursor-pointer" data-cgroup="lab"
+             data-img="https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&w=1200&q=80"
+             data-title="深空飞行器虚拟现实风洞实训中心"
+             data-caption="结合全景 VR 与万瓦级风动测试仪，学生可亲自实时调试自制深空微纳卫星与滑翔翼气动外形。">
+          <img src="https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&w=800&q=80" alt="风洞" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-darkest via-brand-darkest/30 to-transparent"></div>
+          <div class="absolute bottom-5 left-5 right-5">
+            <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-sky-500 text-white font-bold uppercase">空天重器</span>
+            <h4 class="text-lg font-bold text-white mt-1 group-hover:text-cyan-300 transition-colors">深空飞行器气动与仿真中心</h4>
+            <p class="text-xs text-slate-300 line-clamp-1 mt-0.5">实时流体超算仿真与实体高真空测试</p>
+          </div>
+        </div>
+
+        <!-- Photo 5 -->
+        <div class="campus-card group relative h-72 md:h-80 rounded-2xl overflow-hidden cursor-pointer" data-cgroup="living"
+             data-img="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80"
+             data-title="科技艺术融合与极客智能创客工坊"
+             data-caption="配备五轴联动数控机床、金属 3D 打印阵列及各类电子快样测试仪，支持本科生任意硬核创意从图纸到原型落地。">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="工坊" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-darkest via-brand-darkest/30 to-transparent"></div>
+          <div class="absolute bottom-5 left-5 right-5">
+            <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-purple-500 text-white font-bold uppercase">创新空间</span>
+            <h4 class="text-lg font-bold text-white mt-1 group-hover:text-cyan-300 transition-colors">极客创客工坊与机器人竞技场</h4>
+            <p class="text-xs text-slate-300 line-clamp-1 mt-0.5">五轴加工中心与全自主无人机试飞空域</p>
+          </div>
+        </div>
+
+        <!-- Photo 6 -->
+        <div class="campus-card group relative h-72 md:h-80 rounded-2xl overflow-hidden cursor-pointer" data-cgroup="library"
+             data-img="https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?auto=format&fit=crop&w=1200&q=80"
+             data-title="苍穹天文观测台与高原巡天远程中控室"
+             data-caption="坐落于校园主峰顶部的现代化光学与射电望远镜塔楼，夜间向全体师生开放实时星空寻迹与光谱探测。">
+          <img src="https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?auto=format&fit=crop&w=800&q=80" alt="天文台" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-darkest via-brand-darkest/30 to-transparent"></div>
+          <div class="absolute bottom-5 left-5 right-5">
+            <span class="text-[10px] px-2.5 py-0.5 rounded-full bg-indigo-500 text-white font-bold uppercase">星穹视界</span>
+            <h4 class="text-lg font-bold text-white mt-1 group-hover:text-cyan-300 transition-colors">苍穹天文观测台与深空中控室</h4>
+            <p class="text-xs text-slate-300 line-clamp-1 mt-0.5">直接联动高山巡天射电阵列遥测终端</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 招考动态与政策简章 -->
+  <section id="news" class="py-24 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+        <div>
+          <div class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-cyan-400 mb-2">
+            <i data-lucide="bell" class="w-4 h-4"></i> Admissions Bulletin & News
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white font-display">招考焦点与招生权威简章</h2>
+          <p class="text-slate-400 mt-2 text-sm sm:text-base">及时获取关于强基计划、少年班、英才选拔及全国宣讲会日程安排</p>
+        </div>
+        <a href="#faq" class="text-sm font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-1 group">
+          <span>查看全部历年政策通告</span>
+          <i data-lucide="chevron-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+        </a>
+      </div>
+
+      <!-- News Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- News 1 -->
+        <article class="glass-card rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-400/40 transition-all group">
+          <div>
+            <div class="flex items-center justify-between text-xs text-slate-400 mb-3">
+              <span class="px-2.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 font-semibold">强基计划</span>
+              <time datetime="2026-04-10" class="font-mono">2026-04-10</time>
+            </div>
+            <h3 class="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors leading-snug mb-3">
+              星渊科技大学2026年在各省“强基计划”基础学科招生简章正式发布
+            </h3>
+            <p class="text-slate-400 text-xs sm:text-sm line-clamp-3 leading-relaxed">
+              聚焦量子信息、极端能源材料、基础数学与力学。入选考生入校即确立院士导师，全面免除大类分流焦虑，实行‘1+3+X’直博绿色通道。
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+            <span class="text-slate-500">阅读用时约 4 分钟</span>
+            <span class="text-cyan-400 font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+              阅读全文 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </span>
+          </div>
+        </article>
+
+        <!-- News 2 -->
+        <article class="glass-card rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-400/40 transition-all group">
+          <div>
+            <div class="flex items-center justify-between text-xs text-slate-400 mb-3">
+              <span class="px-2.5 py-1 rounded-full bg-purple-500/10 border border-purple-400/30 text-purple-300 font-semibold">少年班 / 拔尖班</span>
+              <time datetime="2026-03-28" class="font-mono">2026-03-28</time>
+            </div>
+            <h3 class="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors leading-snug mb-3">
+              第41期“星渊少年科学家实验班”高二及优秀高一学生初选答辩名单公示
+            </h3>
+            <p class="text-slate-400 text-xs sm:text-sm line-clamp-3 leading-relaxed">
+              面向对数理极端痴迷的青少年人才，测试重在考察思维发散性与独立科研构想，无需死记硬背复杂题型。入选复试名单即日起可查询。
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+            <span class="text-slate-500">阅读用时约 3 分钟</span>
+            <span class="text-cyan-400 font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+              阅读全文 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </span>
+          </div>
+        </article>
+
+        <!-- News 3 -->
+        <article class="glass-card rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-400/40 transition-all group">
+          <div>
+            <div class="flex items-center justify-between text-xs text-slate-400 mb-3">
+              <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-400/30 text-emerald-300 font-semibold">宣讲与答疑</span>
+              <time datetime="2026-03-15" class="font-mono">2026-03-15</time>
+            </div>
+            <h3 class="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors leading-snug mb-3">
+              2026年“星海巡航”全国重点中学教授巡讲团与线上宣讲排期表
+            </h3>
+            <p class="text-slate-400 text-xs sm:text-sm line-clamp-3 leading-relaxed">
+              由30余位特聘教授、书院院长组成的招生咨询团将分赴北京、上海、浙江、安徽、四川等22省市重点高中，现场拆解志愿填报与前沿科研。
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+            <span class="text-slate-500">阅读用时约 2 分钟</span>
+            <span class="text-cyan-400 font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+              阅读全文 <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </span>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 常见疑问 FAQ 模块 -->
+  <section id="faq" class="py-20 relative bg-brand-navy/30 border-t border-slate-800">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-14">
+        <div class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-cyan-400 mb-2">
+          <i data-lucide="help-circle" class="w-4 h-4"></i> Frequently Asked Questions
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white font-display">考生与家长常见疑问解答</h2>
+        <p class="text-slate-400 mt-2 text-sm">关于自由转专业机制、奖助学金支持体系与本科生科研环境的权威答复</p>
+      </div>
+
+      <!-- Accordion Container -->
+      <div class="space-y-4">
+        
+        <!-- Item 1 -->
+        <div class="faq-item glass-card rounded-2xl overflow-hidden border border-slate-800 transition-colors">
+          <button class="faq-toggle w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none">
+            <span class="font-semibold text-white text-base sm:text-lg">星渊科技大学的“100%零门槛转专业”是真的吗？</span>
+            <span class="faq-icon p-1.5 rounded-lg bg-slate-800 text-cyan-400 transition-transform">
+              <i data-lucide="plus" class="w-4 h-4"></i>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-6 text-sm text-slate-300 leading-relaxed border-t border-slate-800/60 pt-4">
+            是的，学校全面遵循“以学生志趣为先”的培养理念。大一结束时，全校所有本科专业向全体学生无条件开放（包括热门的人工智能、计算机、钱学森班等），转出不设任何挂科或绩点阻碍，转入只要通过该专业目标书院的基础学力交谈即可，历史转专业成功率保持在 98.7% 以上。
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="faq-item glass-card rounded-2xl overflow-hidden border border-slate-800 transition-colors">
+          <button class="faq-toggle w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none">
+            <span class="font-semibold text-white text-base sm:text-lg">本科生进实验室和接触大科学仪器的机会有多大？</span>
+            <span class="faq-icon p-1.5 rounded-lg bg-slate-800 text-cyan-400 transition-transform">
+              <i data-lucide="plus" class="w-4 h-4"></i>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-6 text-sm text-slate-300 leading-relaxed border-t border-slate-800/60 pt-4">
+            所有大一新生在入学军训结束后即根据双向选择匹配“一人一学术导师”。学校实施“星渊种子科研资助计划”，本科生可直接申请最高5万元的个人探索研究经费，享有国家级超算机时与超导洁净实验室的使用权限，每年有超过60%的本科毕业生在顶会或JCR一区期刊发表过学术论文。
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="faq-item glass-card rounded-2xl overflow-hidden border border-slate-800 transition-colors">
+          <button class="faq-toggle w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none">
+            <span class="font-semibold text-white text-base sm:text-lg">本科生住宿条件、食堂及生活配套如何？</span>
+            <span class="faq-icon p-1.5 rounded-lg bg-slate-800 text-cyan-400 transition-transform">
+              <i data-lucide="plus" class="w-4 h-4"></i>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-6 text-sm text-slate-300 leading-relaxed border-t border-slate-800/60 pt-4">
+            本科全阶段实行书院制住宿，标准配置为“双人间”（配备干湿分离独立卫浴、24小时热水恒温、中央新风系统与电动升降桌）。各书院一楼均设有极客自习室、星光咖啡厅与创客机械加工室。校内设有三大智能风味餐厅与清真食堂，人均餐饮补贴充足。
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="faq-item glass-card rounded-2xl overflow-hidden border border-slate-800 transition-colors">
+          <button class="faq-toggle w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none">
+            <span class="font-semibold text-white text-base sm:text-lg">奖学金覆盖面如何？是否存在因家庭困难退学的可能？</span>
+            <span class="faq-icon p-1.5 rounded-lg bg-slate-800 text-cyan-400 transition-transform">
+              <i data-lucide="plus" class="w-4 h-4"></i>
+            </span>
+          </button>
+          <div class="faq-content hidden px-6 pb-6 text-sm text-slate-300 leading-relaxed border-t border-slate-800/60 pt-4">
+            学校郑重承诺：绝不让任何一位考入星渊的学子因经济原因失学。新生入学即开设‘星渊绿色通道’无息助学；全校本科生奖助学金覆盖面达到75%，特等奖学金每年单人高达 100,000 元人民币，另设有企业联名海外名校全额交流资助基金。
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 页脚 (Footer) -->
+  <footer class="bg-brand-darkest border-t border-slate-800 pt-16 pb-12 text-slate-400 text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
+        
+        <!-- Col 1: University Identity -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-brand-blue to-brand-cyan p-0.5">
+              <div class="w-full h-full bg-brand-navy rounded-[7px] flex items-center justify-center">
+                <i data-lucide="orbit" class="w-5 h-5 text-cyan-400"></i>
+              </div>
+            </div>
+            <div>
+              <span class="text-lg font-bold text-white font-display tracking-tight">星渊科技大学本科招生网</span>
+              <p class="text-xs text-slate-400 font-mono">admission.scist.edu.cn</p>
+            </div>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed max-w-sm">
+            本站采用全响应式现代前端架构与动态流式呈现，致力于为全国优秀青年学子提供扁平、透明、秒级响应的高考志愿报考全链条信息支持。
+          </p>
+          <div class="flex items-center space-x-3 pt-2">
+            <a href="javascript:void(0)" class="w-8 h-8 rounded-lg bg-slate-800/80 hover:bg-cyan-500 hover:text-brand-darkest flex items-center justify-center transition-colors" title="官方微信">
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
+            </a>
+            <a href="javascript:void(0)" class="w-8 h-8 rounded-lg bg-slate-800/80 hover:bg-cyan-500 hover:text-brand-darkest flex items-center justify-center transition-colors" title="官方Bilibili">
+              <i data-lucide="tv" class="w-4 h-4"></i>
+            </a>
+            <a href="javascript:void(0)" class="w-8 h-8 rounded-lg bg-slate-800/80 hover:bg-cyan-500 hover:text-brand-darkest flex items-center justify-center transition-colors" title="官方微博">
+              <i data-lucide="share-2" class="w-4 h-4"></i>
+            </a>
+            <a href="javascript:void(0)" class="w-8 h-8 rounded-lg bg-slate-800/80 hover:bg-cyan-500 hover:text-brand-darkest flex items-center justify-center transition-colors text-slate-300" title="GitHub 开源社区">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2: Fast Navigation -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-4">招生导航</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#scores" class="hover:text-cyan-400 transition-colors">历年投档线检索</a></li>
+            <li><a href="#majors" class="hover:text-cyan-400 transition-colors">拔尖前沿学科总览</a></li>
+            <li><a href="#campus" class="hover:text-cyan-400 transition-colors">书院与生活设施</a></li>
+            <li><a href="#news" class="hover:text-cyan-400 transition-colors">强基与少年班简章</a></li>
+            <li><a href="#faq" class="hover:text-cyan-400 transition-colors">报考疑难FAQ</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Research Institutes -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-4">前沿书院</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#majors" class="hover:text-cyan-400 transition-colors">严济慈物理英才班</a></li>
+            <li><a href="#majors" class="hover:text-cyan-400 transition-colors">图灵计算机科学学院</a></li>
+            <li><a href="#majors" class="hover:text-cyan-400 transition-colors">空天微重力探索书院</a></li>
+            <li><a href="#majors" class="hover:text-cyan-400 transition-colors">托卡马克聚变能学院</a></li>
+            <li><a href="#majors" class="hover:text-cyan-400 transition-colors">生命健康与脑机工坊</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Contact & Hotline -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 mb-4">招生咨询热线</h4>
+          <div class="space-y-2 text-xs text-slate-400">
+            <p class="flex items-center gap-1.5 text-white font-mono font-medium">
+              <i data-lucide="phone-call" class="w-3.5 h-3.5 text-cyan-400"></i>
+              <span>400-888-2026 (多线)</span>
+            </p>
+            <p>工作日：08:30 - 18:00</p>
+            <p class="flex items-center gap-1.5 text-slate-300">
+              <i data-lucide="mail" class="w-3.5 h-3.5 text-cyan-400"></i>
+              <span>zsb@scist.edu.cn</span>
+            </p>
+            <p class="text-slate-500 pt-1 leading-relaxed">
+              地址：中国科学城星渊大道 1024 号行政科研总楼
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Legal and Education Domain Clarification -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-3">
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-1">
+          <span>© 2026 星渊科技大学 (SCIST) 版权所有</span>
+          <span>教育网统一标识编码：EDU-CN-SCIST-8848</span>
+          <span class="text-cyan-400/80">皖ICP备20261024号-1</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <span class="inline-block w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span class="text-slate-400">服务器状态：光纤低延迟就绪</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- 返回顶部按钮 -->
+  <button id="back-to-top" class="fixed bottom-24 left-6 z-40 p-3 rounded-xl bg-slate-800/90 border border-slate-700/80 text-cyan-400 hover:text-white hover:bg-slate-700 shadow-xl opacity-0 pointer-events-none transition-all" title="返回顶部">
+    <i data-lucide="chevron-up" class="w-5 h-5"></i>
+  </button>
+
+  <!-- 右下角悬浮 AI 对话按钮 -->
+  <div class="fixed bottom-6 right-6 z-50">
+    <button id="bot-toggle-btn" class="relative group p-4 rounded-full gradient-border-btn text-brand-darkest font-bold shadow-2xl flex items-center justify-center transition-all hover:scale-110">
+      <i data-lucide="sparkles" class="w-6 h-6"></i>
+      <span class="absolute -top-1 -right-1 flex h-3.5 w-3.5">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-cyan-300 border-2 border-brand-navy"></span>
+      </span>
+      <span class="hidden sm:inline-block ml-2 text-xs font-bold pr-1">智能报考助手</span>
+    </button>
+  </div>
+
+  <!-- AI 招生咨询悬浮弹窗 (Bot Chat Floating Modal) -->
+  <div id="bot-modal" class="fixed bottom-24 right-4 sm:right-6 w-[92vw] sm:w-[420px] h-[540px] max-h-[82vh] glass-card-interactive rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden border border-cyan-500/30 hidden">
+    <!-- Modal Header -->
+    <div class="p-4 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between">
+      <div class="flex items-center space-x-2.5">
+        <div class="w-8 h-8 rounded-lg bg-cyan-500/20 border border-cyan-400/40 flex items-center justify-center text-cyan-300">
+          <i data-lucide="bot" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h4 class="text-sm font-bold text-white flex items-center gap-1.5">
+            星渊小助手 AI
+            <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.2 rounded font-mono">在线</span>
+          </h4>
+          <p class="text-[10px] text-slate-400">2026本招政策智能答疑模型</p>
+        </div>
+      </div>
+      <button id="close-bot-btn" class="text-slate-400 hover:text-white p-1 rounded-lg">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+
+    <!-- Messages Container -->
+    <div id="bot-chat-history" class="flex-1 p-4 overflow-y-auto space-y-3.5 text-xs">
+      <div class="flex items-start gap-2.5">
+        <div class="w-6 h-6 rounded-md bg-cyan-500/20 flex items-center justify-center text-cyan-400 shrink-0">
+          <i data-lucide="bot" class="w-4 h-4"></i>
+        </div>
+        <div class="bg-slate-800/80 text-slate-200 p-3 rounded-2xl rounded-tl-none border border-slate-700/60 leading-relaxed max-w-[85%]">
+          同学你好！我是星渊科大招生智能助理。请问你想了解哪个省份的投档线、保研直博政策还是转专业机制呢？可以点击下方快捷问题或直接输入问我哦！
+        </div>
+      </div>
+    </div>
+
+    <!-- Bot Preset Quick Prompts -->
+    <div class="p-2.5 bg-slate-900/60 border-t border-slate-800/80 flex flex-wrap gap-1.5">
+      <button class="bot-preset-btn text-[11px] px-2.5 py-1 rounded-full bg-slate-800 text-cyan-300 hover:bg-cyan-500/20 border border-cyan-500/20 transition-colors" data-q="强基计划报名门槛和优惠政策是什么？">
+        强基计划政策
+      </button>
+      <button class="bot-preset-btn text-[11px] px-2.5 py-1 rounded-full bg-slate-800 text-cyan-300 hover:bg-cyan-500/20 border border-cyan-500/20 transition-colors" data-q="进校后转专业有限制吗？">
+        转专业要求
+      </button>
+      <button class="bot-preset-btn text-[11px] px-2.5 py-1 rounded-full bg-slate-800 text-cyan-300 hover:bg-cyan-500/20 border border-cyan-500/20 transition-colors" data-q="本科生能否直接分配科研导师？">
+        本科导师分配
+      </button>
+      <button class="bot-preset-btn text-[11px] px-2.5 py-1 rounded-full bg-slate-800 text-cyan-300 hover:bg-cyan-500/20 border border-cyan-500/20 transition-colors" data-q="各省录取分数和对应位次大概是多少？">
+        投档分数位次
+      </button>
+    </div>
+
+    <!-- Input Form -->
+    <div class="p-3 bg-slate-950 border-t border-slate-800 flex items-center gap-2">
+      <input type="text" id="bot-input" placeholder="输入你想咨询的志愿问题..." class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400">
+      <button id="bot-send-btn" class="px-3.5 py-2 rounded-xl bg-cyan-500 text-brand-darkest hover:bg-cyan-400 font-bold transition-colors">
+        <i data-lucide="send" class="w-4 h-4"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- 专业详情弹窗 (Major Detail Modal) -->
+  <div id="major-detail-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
+    <div class="glass-card-interactive max-w-2xl w-full rounded-2xl border border-cyan-500/30 overflow-hidden shadow-2xl">
+      <div class="p-6 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between">
+        <div>
+          <span id="modal-college-tag" class="text-xs font-mono text-cyan-400 px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/20">书院归属</span>
+          <h3 id="modal-major-title" class="text-2xl font-bold text-white mt-1">专业名称</h3>
+        </div>
+        <button id="close-major-modal" class="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800">
+          <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+      </div>
+      <div class="p-6 space-y-4 max-h-[60vh] overflow-y-auto text-sm">
+        <div>
+          <h5 class="text-xs uppercase font-bold text-slate-400 mb-1.5 tracking-wider">培养特色标签</h5>
+          <div id="modal-tags" class="flex flex-wrap gap-2"></div>
+        </div>
+        <div>
+          <h5 class="text-xs uppercase font-bold text-slate-400 mb-1.5 tracking-wider">学科定位与前沿育人体系</h5>
+          <p id="modal-desc" class="text-slate-300 leading-relaxed"></p>
+        </div>
+        <div class="p-4 rounded-xl bg-cyan-950/30 border border-cyan-500/20 text-xs text-cyan-300 flex items-start gap-2.5">
+          <i data-lucide="info" class="w-4 h-4 shrink-0 mt-0.5"></i>
+          <span>星渊科技大学所有本科学位均配备海外名校（剑桥、加州理工、苏黎世联邦理工等）一学期免学费联合科研交换学分认可机制。</span>
+        </div>
+      </div>
+      <div class="p-4 bg-slate-900/80 border-t border-slate-800 flex justify-end">
+        <a href="#scores" id="modal-to-scores" class="px-5 py-2 rounded-xl gradient-border-btn text-brand-darkest font-bold text-xs">
+          查看该专业历年录取位次
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 校园图鉴大图灯箱 (Lightbox Modal with Prev/Next) -->
+  <div id="image-lightbox-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-lg flex items-center justify-center p-4 hidden">
+    <div class="relative max-w-4xl w-full overflow-hidden flex flex-col items-center lightbox-content">
+      <button id="close-lightbox-btn" class="absolute top-2 right-2 text-white hover:text-cyan-400 p-2 z-10 bg-slate-900/60 rounded-full">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+
+      <!-- Prev / Next Controls -->
+      <button id="lightbox-prev" class="lightbox-nav-btn absolute left-2 top-1/2 -translate-y-1/2 text-white hover:text-cyan-400 p-3 rounded-full bg-slate-900/70 border border-slate-700 z-10">
+        <i data-lucide="chevron-left" class="w-6 h-6"></i>
+      </button>
+      <button id="lightbox-next" class="lightbox-nav-btn absolute right-2 top-1/2 -translate-y-1/2 text-white hover:text-cyan-400 p-3 rounded-full bg-slate-900/70 border border-slate-700 z-10">
+        <i data-lucide="chevron-right" class="w-6 h-6"></i>
+      </button>
+
+      <div class="w-full max-h-[70vh] rounded-2xl overflow-hidden border border-slate-700 bg-slate-900 shadow-2xl flex items-center justify-center">
+        <img id="lightbox-img" src="" alt="大图" class="w-full h-full object-cover">
+      </div>
+      <div class="w-full mt-4 text-center">
+        <div class="flex items-center justify-center gap-3">
+          <h4 id="lightbox-title" class="text-xl font-bold text-white">场景名称</h4>
+          <span id="lightbox-count" class="text-xs px-2 py-0.5 rounded bg-slate-800 text-cyan-400 font-mono">1 / 6</span>
+        </div>
+        <p id="lightbox-desc" class="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl mx-auto"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 全站搜索弹窗 (Search Modal - Ctrl+K) -->
+  <div id="search-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-start justify-center pt-24 px-4 hidden">
+    <div class="search-box glass-card-interactive max-w-xl w-full rounded-2xl border border-cyan-500/30 overflow-hidden shadow-2xl">
+      <div class="p-4 bg-slate-900/90 border-b border-slate-800 flex items-center gap-3">
+        <i data-lucide="search" class="w-5 h-5 text-cyan-400 shrink-0"></i>
+        <input type="text" id="search-modal-input" placeholder="输入专业名、政策关键词、学院名检索..." class="flex-1 bg-transparent text-white placeholder-slate-500 text-sm focus:outline-none">
+        <kbd class="text-[10px] px-2 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-400 font-mono">ESC</kbd>
+        <button id="close-search-modal" class="text-slate-400 hover:text-white p-1">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div id="search-modal-results" class="p-3 max-h-[50vh] overflow-y-auto space-y-1">
+        <!-- Dynamically rendered -->
+      </div>
+      <div class="p-3 bg-slate-900/60 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-500">
+        <span>按 ↑↓ 浏览，回车进入</span>
+        <span class="text-cyan-400">星渊科大招生知识图谱</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 在线意向预报名弹窗 (Online Application Modal) -->
+  <div id="apply-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
+    <div class="apply-box glass-card-interactive max-w-lg w-full rounded-2xl border border-cyan-500/30 overflow-hidden shadow-2xl">
+      <div class="p-5 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+          <div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center">
+            <i data-lucide="clipboard-check" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-white">2026年本科生报考意向登记</h3>
+            <p class="text-xs text-slate-400">我们将为您对接所在省份专属招生组导师</p>
+          </div>
+        </div>
+        <button id="close-apply-modal" class="text-slate-400 hover:text-white p-1">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <form id="apply-form" class="p-6 space-y-4 text-xs">
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">考生姓名 *</label>
+            <input type="text" required placeholder="如：张三" class="form-input w-full px-3 py-2 rounded-xl text-xs">
+          </div>
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">联系手机 *</label>
+            <input type="tel" required placeholder="13800000000" class="form-input w-full px-3 py-2 rounded-xl text-xs">
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">高考省份 *</label>
+            <select required class="form-input w-full px-3 py-2 rounded-xl text-xs cursor-pointer">
+              <option value="北京">北京</option>
+              <option value="浙江">浙江</option>
+              <option value="安徽">安徽</option>
+              <option value="广东">广东</option>
+              <option value="四川">四川</option>
+              <option value="江苏">江苏</option>
+              <option value="其他">其他省份</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">预估/模考成绩</label>
+            <input type="number" placeholder="如：685" class="form-input w-full px-3 py-2 rounded-xl text-xs">
+          </div>
+        </div>
+        <div>
+          <label class="block text-slate-300 font-semibold mb-1">首选目标专业方向 *</label>
+          <select required class="form-input w-full px-3 py-2 rounded-xl text-xs cursor-pointer">
+            <option value="quantum">量子计算与光量子信息 (少年班/英才班)</option>
+            <option value="ai">通用人工智能与多模态世界模型 (图灵班)</option>
+            <option value="space">深空探测动力与小行星抓捕工程</option>
+            <option value="energy">受控核聚变与高温超导材料 (强基计划)</option>
+            <option value="bio">突触仿生神经工程与脑机接口</option>
+            <option value="astro">天体物理学与引力波引力透镜观测</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-slate-300 font-semibold mb-1">高中就读学校及备注</label>
+          <textarea rows="2" placeholder="如：人大附中 / 获得过物理竞赛省一等奖..." class="form-input w-full px-3 py-2 rounded-xl text-xs"></textarea>
+        </div>
+        <div class="pt-2">
+          <button type="submit" class="w-full gradient-border-btn py-3 rounded-xl text-brand-darkest font-bold text-sm shadow-lg">
+            立即提交意向登记
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 全局 Toast 容器 -->
+  <div id="toast-container"></div>
+
+  <!-- JavaScript 脚本模块 -->
+  <script src="js/data.js"></script>
+  <script src="js/canvas.js"></script>
+  <script src="js/bot.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // 初始化 Lucide 图标
+    lucide.createIcons();
+  </script>
+</body>
+</html>
