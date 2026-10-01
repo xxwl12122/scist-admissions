@@ -53,105 +53,111 @@
   <!-- 顶部滚动进度指示条 -->
   <div id="scroll-progress-bar"></div>
 
-  <!-- 顶部重要通知公告条 -->
-  <div class="bg-gradient-to-r from-blue-950 via-slate-900 to-cyan-950 border-b border-cyan-500/20 py-2 px-4 text-xs font-medium tracking-wide">
-    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
-      <div class="flex items-center space-x-2 text-cyan-300">
-        <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 animate-pulse">
+  <!-- 顶部微型通告栏 (Topbar Announcement) -->
+  <aside class="bg-[#050B14]/90 backdrop-blur-md border-b border-white/[0.06] py-1.5 px-4 text-xs tracking-wide text-slate-400 z-50 relative flex-shrink-0">
+    <div class="max-w-[1320px] mx-auto flex items-center justify-between gap-4">
+      <!-- Left Announcement -->
+      <div class="flex items-center space-x-2.5 min-w-0 flex-shrink truncate">
+        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-cyan-500/15 border border-cyan-400/30 text-cyan-300 flex-shrink-0 tracking-wider shadow-[0_0_12px_rgba(0,242,254,0.2)] whitespace-nowrap">
           HOT
         </span>
-        <span>2026年本科生“星火计划”拔尖创新人才选拔简章与自主招生报录系统正式开放</span>
+        <span class="text-slate-300 text-xs font-normal truncate whitespace-nowrap">
+          2026年本科生“星火计划”拔尖创新人才选拔简章与自主招生报录系统正式开放
+        </span>
       </div>
-      <div class="flex items-center space-x-4 text-slate-400">
-        <a href="#scores" class="hover:text-cyan-300 transition-colors flex items-center gap-1">
-          <i data-lucide="bar-chart-2" class="w-3.5 h-3.5"></i> 历年分数速查
+      <!-- Right Auxiliary Links -->
+      <div class="flex items-center space-x-3 text-slate-400 text-xs flex-shrink-0 whitespace-nowrap hidden md:flex">
+        <a href="#scores" class="hover:text-cyan-300 transition-colors flex items-center gap-1.5 whitespace-nowrap">
+          <i data-lucide="bar-chart-2" class="w-3.5 h-3.5 text-cyan-400/90"></i>
+          <span>历年分数速查</span>
         </a>
-        <span class="text-slate-600">|</span>
-        <button id="header-bot-trigger" class="hover:text-cyan-300 transition-colors flex items-center gap-1 text-cyan-400">
-          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> AI 报考咨询
+        <span class="text-slate-700 select-none">·</span>
+        <button id="header-bot-trigger" class="hover:text-cyan-300 transition-colors flex items-center gap-1.5 text-cyan-400 whitespace-nowrap cursor-pointer">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+          <span>AI 报考咨询</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- 悬浮毛玻璃主导航 (Floating Frosted Glass Navbar) -->
+  <div class="sticky top-2 sm:top-3 z-40 px-3 sm:px-6 w-full max-w-[1368px] mx-auto transition-all duration-300" id="main-header-container">
+    <header class="glass-nav-floating rounded-2xl px-4 sm:px-6 h-[72px] sm:h-[76px] flex items-center justify-between transition-all duration-300" id="main-header">
+      
+      <!-- Left: Logo & University Emblem (严格防折行与防挤压) -->
+      <a href="#" class="flex items-center space-x-3 group flex-shrink-0 whitespace-nowrap mr-6 xl:mr-10 select-none">
+        <div class="relative w-11 h-11 rounded-xl bg-gradient-to-tr from-brand-blue via-brand-cyan to-white p-[1.5px] shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform duration-300 flex-shrink-0">
+          <div class="w-full h-full bg-brand-navy rounded-[9px] flex items-center justify-center overflow-hidden">
+            <svg class="w-6 h-6 text-cyan-400 transition-transform group-hover:rotate-45 duration-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M12 2v3m0 14v3M2 12h3m14 0h3m-3.5-6.5l-2.1 2.1m-8.8 8.8l-2.1 2.1m0-13l2.1 2.1m8.8 8.8l2.1 2.1"></path>
+            </svg>
+          </div>
+        </div>
+        <div class="flex flex-col flex-shrink-0 whitespace-nowrap">
+          <div class="flex items-center space-x-2 whitespace-nowrap">
+            <span class="text-lg sm:text-xl font-bold tracking-tight text-white font-display whitespace-nowrap">星渊科技大学</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 font-mono tracking-wider whitespace-nowrap">SCIST</span>
+          </div>
+          <span class="text-[10px] text-slate-400 font-light tracking-wider uppercase whitespace-nowrap">StarCore Institute of Science & Tech · 本科招生</span>
+        </div>
+      </a>
+
+      <!-- Center: Desktop Navigation Items (>= 1280px 展现，舒适大间距，绝对不换行) -->
+      <nav class="hidden xl:flex items-center gap-1.5 2xl:gap-2 flex-shrink-0 whitespace-nowrap">
+        <a href="#hero" class="nav-item-link px-3.5 py-2 rounded-xl text-cyan-300 bg-cyan-500/10 border border-cyan-400/20 whitespace-nowrap transition-all duration-200">首页</a>
+        <a href="#scores" class="nav-item-link px-3.5 py-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/[0.06] whitespace-nowrap transition-all duration-200">分数线速查</a>
+        <a href="#majors" class="nav-item-link px-3.5 py-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/[0.06] whitespace-nowrap transition-all duration-200">前沿学科与专业</a>
+        <a href="#campus" class="nav-item-link px-3.5 py-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/[0.06] whitespace-nowrap transition-all duration-200">校园全景</a>
+        <a href="#news" class="nav-item-link px-3.5 py-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/[0.06] whitespace-nowrap transition-all duration-200">招考动态</a>
+        <a href="#faq" class="nav-item-link px-3.5 py-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/[0.06] whitespace-nowrap transition-all duration-200">报考指南</a>
+      </nav>
+
+      <!-- Right: Search Pill & CTA Button (Desktop) -->
+      <div class="hidden xl:flex items-center space-x-3 flex-shrink-0 whitespace-nowrap ml-6">
+        <!-- Search Trigger Capsule -->
+        <button data-search-trigger class="flex items-center gap-2.5 h-9 px-3 rounded-xl bg-slate-900/90 border border-white/10 hover:border-cyan-400/40 hover:shadow-[0_0_15px_rgba(0,242,254,0.15)] text-slate-400 hover:text-white transition-all text-xs flex-shrink-0 whitespace-nowrap cursor-pointer" title="全站速查 (Ctrl+K)">
+          <i data-lucide="search" class="w-3.5 h-3.5 text-cyan-400 flex-shrink-0"></i>
+          <span class="whitespace-nowrap font-normal">搜索全站</span>
+          <kbd class="px-1.5 py-0.5 rounded-md bg-slate-800 border border-slate-700 text-[10px] text-slate-400 font-mono flex-shrink-0 whitespace-nowrap shadow-inner">Ctrl K</kbd>
+        </button>
+
+        <!-- CTA Apply Button (单行严谨排版，深邃科技渐变，微外发光) -->
+        <button data-apply-trigger class="h-10 px-5 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-semibold text-xs tracking-wide flex items-center justify-center space-x-2 shadow-[0_0_20px_rgba(37,99,235,0.35)] hover:shadow-[0_0_28px_rgba(0,242,254,0.45)] active:scale-95 transition-all duration-200 flex-shrink-0 whitespace-nowrap cursor-pointer">
+          <i data-lucide="send" class="w-3.5 h-3.5 text-cyan-200 flex-shrink-0"></i>
+          <span class="whitespace-nowrap flex-shrink-0">网上报考登记</span>
+        </button>
+      </div>
+
+      <!-- Mobile & Tablet Trigger Buttons (< xl) -->
+      <div class="flex xl:hidden items-center space-x-2 flex-shrink-0 whitespace-nowrap">
+        <button data-search-trigger class="p-2.5 rounded-xl bg-slate-900/80 text-slate-300 hover:text-white border border-white/10 cursor-pointer" title="搜索">
+          <i data-lucide="search" class="w-5 h-5 text-cyan-400"></i>
+        </button>
+        <button id="mobile-menu-btn" class="p-2.5 rounded-xl bg-slate-900/80 text-slate-300 hover:text-white border border-white/10 cursor-pointer" aria-label="切换菜单">
+          <i data-lucide="menu" id="menu-icon-open" class="w-6 h-6"></i>
+          <i data-lucide="x" id="menu-icon-close" class="w-6 h-6 hidden"></i>
+        </button>
+      </div>
+
+    </header>
+
+    <!-- Mobile Drawer Dropdown (< xl 折叠面板) -->
+    <div id="mobile-menu" class="hidden xl:hidden mt-2 rounded-2xl border border-white/10 bg-[#0B0F19]/95 backdrop-blur-2xl p-4 space-y-2 shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
+      <a href="#hero" class="block px-3.5 py-2.5 rounded-xl text-cyan-300 font-medium bg-cyan-500/10 border border-cyan-400/20 whitespace-nowrap">首页</a>
+      <a href="#scores" class="block px-3.5 py-2.5 rounded-xl text-slate-200 hover:bg-white/[0.06] font-medium whitespace-nowrap">分数线与名额速查</a>
+      <a href="#majors" class="block px-3.5 py-2.5 rounded-xl text-slate-200 hover:bg-white/[0.06] font-medium whitespace-nowrap">前沿学科与专业</a>
+      <a href="#campus" class="block px-3.5 py-2.5 rounded-xl text-slate-200 hover:bg-white/[0.06] font-medium whitespace-nowrap">校园全景生活</a>
+      <a href="#news" class="block px-3.5 py-2.5 rounded-xl text-slate-200 hover:bg-white/[0.06] font-medium whitespace-nowrap">招考焦点动态</a>
+      <a href="#faq" class="block px-3.5 py-2.5 rounded-xl text-slate-200 hover:bg-white/[0.06] font-medium whitespace-nowrap">录取疑问速答</a>
+      <div class="pt-2">
+        <button data-apply-trigger class="w-full h-11 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 text-white font-bold text-sm tracking-wide shadow-lg flex items-center justify-center space-x-2">
+          <i data-lucide="send" class="w-4 h-4"></i>
+          <span>网上报考与模拟填报</span>
         </button>
       </div>
     </div>
   </div>
-
-  <!-- 导航栏 (Sticky Glassmorphic Header) -->
-  <header class="sticky top-0 z-40 glass-nav transition-all duration-300" id="main-header">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20">
-        
-        <!-- Logo & University Emblem -->
-        <a href="#" class="flex items-center space-x-3.5 group">
-          <div class="relative w-12 h-12 rounded-xl bg-gradient-to-tr from-brand-blue via-brand-cyan to-white p-[2px] shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform duration-300">
-            <div class="w-full h-full bg-brand-navy rounded-[10px] flex items-center justify-center overflow-hidden">
-              <svg class="w-7 h-7 text-cyan-400 transition-transform group-hover:rotate-45 duration-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="3"></circle>
-                <path d="M12 2v3m0 14v3M2 12h3m14 0h3m-3.5-6.5l-2.1 2.1m-8.8 8.8l-2.1 2.1m0-13l2.1 2.1m8.8 8.8l2.1 2.1"></path>
-              </svg>
-            </div>
-          </div>
-          <div class="flex flex-col">
-            <div class="flex items-center space-x-2">
-              <span class="text-xl font-bold tracking-tight text-white font-display">星渊科技大学</span>
-              <span class="text-[10px] px-1.5 py-0.5 rounded bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 font-mono tracking-wider">SCIST</span>
-            </div>
-            <span class="text-[11px] text-slate-400 font-light tracking-widest uppercase">StarCore Institute of Science & Tech · 本科招生</span>
-          </div>
-        </a>
-
-        <!-- Desktop Navigation Items -->
-        <nav class="hidden lg:flex items-center space-x-1 font-medium text-sm text-slate-300">
-          <a href="#hero" class="px-3.5 py-2 rounded-lg text-cyan-400 bg-cyan-500/10 transition-colors">首页</a>
-          <a href="#scores" class="px-3.5 py-2 rounded-lg hover:text-white hover:bg-slate-800/60 transition-colors">分数线速查</a>
-          <a href="#majors" class="px-3.5 py-2 rounded-lg hover:text-white hover:bg-slate-800/60 transition-colors">前沿学科与专业</a>
-          <a href="#campus" class="px-3.5 py-2 rounded-lg hover:text-white hover:bg-slate-800/60 transition-colors">校园全景</a>
-          <a href="#news" class="px-3.5 py-2 rounded-lg hover:text-white hover:bg-slate-800/60 transition-colors">招考动态</a>
-          <a href="#faq" class="px-3.5 py-2 rounded-lg hover:text-white hover:bg-slate-800/60 transition-colors">报考指南</a>
-        </nav>
-
-        <!-- Right Action CTAs -->
-        <div class="hidden lg:flex items-center space-x-3">
-          <!-- Search trigger -->
-          <button data-search-trigger class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900/80 border border-slate-700/60 text-slate-400 hover:text-white hover:border-cyan-400/50 transition-colors text-xs" title="快速搜索 (Ctrl+K)">
-            <i data-lucide="search" class="w-3.5 h-3.5 text-cyan-400"></i>
-            <span>搜索全站</span>
-            <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-[10px] text-slate-400 font-mono">Ctrl+K</kbd>
-          </button>
-          <!-- Apply Now Modal Trigger -->
-          <button data-apply-trigger class="gradient-border-btn px-5 py-2 rounded-xl text-brand-darkest font-semibold text-sm flex items-center space-x-1.5 shadow-md">
-            <i data-lucide="send" class="w-4 h-4"></i>
-            <span>网上报考登记</span>
-          </button>
-        </div>
-
-        <!-- Mobile Menu Toggle Button -->
-        <div class="flex lg:hidden items-center space-x-2">
-          <button data-search-trigger class="p-2.5 rounded-xl bg-slate-800/70 text-slate-300 hover:text-white border border-slate-700/60">
-            <i data-lucide="search" class="w-5 h-5"></i>
-          </button>
-          <button id="mobile-menu-btn" class="p-2.5 rounded-xl bg-slate-800/70 text-slate-300 hover:text-white border border-slate-700/60">
-            <i data-lucide="menu" id="menu-icon-open" class="w-6 h-6"></i>
-            <i data-lucide="x" id="menu-icon-close" class="w-6 h-6 hidden"></i>
-          </button>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Mobile Drawer Dropdown -->
-    <div id="mobile-menu" class="hidden lg:hidden border-b border-slate-800 bg-brand-navy/95 backdrop-blur-xl px-4 pt-3 pb-6 space-y-2">
-      <a href="#hero" class="block px-3 py-2.5 rounded-lg text-cyan-400 font-medium bg-cyan-500/10">首页</a>
-      <a href="#scores" class="block px-3 py-2.5 rounded-lg text-slate-200 hover:bg-slate-800/60 font-medium">分数线与名额速查</a>
-      <a href="#majors" class="block px-3 py-2.5 rounded-lg text-slate-200 hover:bg-slate-800/60 font-medium">前沿学科与专业</a>
-      <a href="#campus" class="block px-3 py-2.5 rounded-lg text-slate-200 hover:bg-slate-800/60 font-medium">校园全景生活</a>
-      <a href="#news" class="block px-3 py-2.5 rounded-lg text-slate-200 hover:bg-slate-800/60 font-medium">招考焦点动态</a>
-      <a href="#faq" class="block px-3 py-2.5 rounded-lg text-slate-200 hover:bg-slate-800/60 font-medium">录取疑问速答</a>
-      <div class="pt-3">
-        <button data-apply-trigger class="w-full gradient-border-btn py-3 rounded-lg text-brand-darkest font-bold text-center block">
-          网上报考与模拟填报
-        </button>
-      </div>
-    </div>
-  </header>
 
   <!-- 英雄区 (Hero Section) -->
   <section id="hero" class="relative min-h-[92vh] flex items-center justify-center overflow-hidden py-16 md:py-24">

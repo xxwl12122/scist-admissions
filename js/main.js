@@ -548,9 +548,11 @@
     });
     navLinks.forEach(a => {
       const active = a.getAttribute('href') === current;
-      a.classList.toggle('text-cyan-400', active);
+      a.classList.toggle('active', active);
+      a.classList.toggle('text-cyan-300', active);
       a.classList.toggle('bg-cyan-500/10', active);
-      a.classList.toggle('text-slate-300', !active);
+      a.classList.toggle('border-cyan-400/20', active);
+      a.classList.toggle('text-slate-400', !active);
     });
   }
 

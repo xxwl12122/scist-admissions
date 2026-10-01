@@ -68,11 +68,40 @@ body {
    玻璃态组件
 ══════════════════════════════════════════════════════════ */
 .glass-nav {
-  background: rgba(10, 23, 40, 0.85);
+  background: rgba(11, 15, 25, 0.78);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   transition: box-shadow 0.3s ease;
+}
+
+.glass-nav-floating {
+  background: rgba(11, 15, 25, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.03);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-item-link {
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  font-size: 14px;
+  color: #94A3B8;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.nav-item-link:hover {
+  color: #FFFFFF !important;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.nav-item-link.active {
+  color: #00F2FE !important;
+  background: rgba(0, 242, 254, 0.1) !important;
+  border: 1px solid rgba(0, 242, 254, 0.25) !important;
 }
 
 .glass-card {
