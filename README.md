@@ -10,7 +10,7 @@
 
 面向未来的高校本科招生官方门户，融合量子计算、深空探测、受控核聚变等前沿科技风格设计。
 
-[在线体验](#快速开始) · [特色功能](#核心亮点) · [项目结构](#项目结构)
+[🚀 在线体验 (GitHub Pages)](https://xxwl12122.github.io/scist-admissions/) · [特色功能](#核心亮点) · [项目结构](#项目结构)
 
 </div>
 
@@ -52,10 +52,14 @@ E:\Rainer\ (or repo root)
 
 ## 🚀 快速开始
 
-### 方式一：直接浏览器运行
-直接在浏览器中双击打开 `index.html` 即可畅享完整体验（无须构建步骤）。
+### 方式一：线上即时体验（推荐）
+直接点击访问已通过 GitHub Pages 全球 CDN 加速部署的在线门户：
+👉 **[https://xxwl12122.github.io/scist-admissions/](https://xxwl12122.github.io/scist-admissions/)**
 
-### 方式二：本地静态服务器
+### 方式二：本地直接打开
+直接在浏览器中双击打开 `index.html` 即可畅享完整体验（无须任何构建步骤）。
+
+### 方式三：本地静态服务器
 ```bash
 # 使用 npx serve
 npx serve .
