@@ -408,16 +408,16 @@
             <span>💻 图灵计算机科学学院与通用人工智能荣誉班</span>
           </div>
           <p class="text-slate-300 text-xs leading-relaxed">
-            以打破大模型推理瓶颈与具身智能为核心，课程全面对标 Stanford、MIT，为本科生提供全国罕见的顶级科研条件：
+            以突破大模型推理极限与具身机器人控制为核心，紧密对接国家新一代人工智能战略体系，为本科生提供全国罕见的顶级科研条件：
           </p>
           <div class="space-y-1.5 text-[11px] bg-slate-900/80 p-2.5 rounded-xl border border-slate-700">
             <div class="flex items-start gap-1 text-slate-300">
               <span class="text-cyan-400 font-bold">• 算力自由：</span>
-              <span>本科新生每人享有独立高规格独占 GPU 算力卡槽，直接实训百亿级模型。</span>
+              <span>本科新生每人享有独立高规格昇腾/GPU专属算力节点，直接实训百亿级前沿世界模型。</span>
             </div>
             <div class="flex items-start gap-1 text-slate-300">
               <span class="text-emerald-400 font-bold">• 战绩彪炳：</span>
-              <span>星渊战队蝉联 ACM-ICPC 全球总决赛冠亚季军，毕业生获国际顶尖实验室直聘。</span>
+              <span>星渊战队蝉联 ACM-ICPC 全球总决赛金奖，92%毕业生直通中科院计算所及硬科技领跑企业。</span>
             </div>
           </div>
           <div class="flex flex-wrap gap-1.5 pt-1">

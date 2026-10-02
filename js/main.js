@@ -237,13 +237,27 @@
     const query  = scoreSearch    ? scoreSearch.value.trim().toLowerCase() : '';
 
     const filtered = ADMISSION_DATA.filter(r => {
-      const mProv   = prov   === 'all' || r.province === prov;
-      const mStream = stream === 'all' || r.stream === stream;
+      const mProv = prov === 'all' || r.province === prov;
+      let mStream = true;
+      if (stream !== 'all') {
+        if (stream === '物化双选') {
+          mStream = r.stream === '物化双选' || (r.tag && r.tag.includes('物化'));
+        } else if (stream === '传统理科批') {
+          mStream = r.tag && r.tag.includes('传统理科批');
+        } else if (stream === '综合改革') {
+          mStream = r.stream === '综合改革' || (r.tag && r.tag.includes('综合改革'));
+        } else if (stream === '强基拔尖') {
+          mStream = r.stream === '强基拔尖' || (r.tag && r.tag.includes('强基'));
+        } else {
+          mStream = r.stream === stream;
+        }
+      }
       const mYear   = r.year === year;
       const mQuery  = !query ||
         r.major.toLowerCase().includes(query) ||
         r.college.toLowerCase().includes(query) ||
-        r.province.toLowerCase().includes(query);
+        r.province.toLowerCase().includes(query) ||
+        (r.tag && r.tag.toLowerCase().includes(query));
       return mProv && mStream && mYear && mQuery;
     });
 
@@ -262,32 +276,46 @@
       filtered.forEach((row, idx) => {
         const tr = document.createElement('tr');
         tr.className = 'hover:bg-slate-800/40 transition-colors group animate-row-in';
-        tr.style.animationDelay = `${idx * 40}ms`;
+        tr.style.animationDelay = `${idx * 30}ms`;
 
         const rankBadge =
-          row.score >= 690 ? '<span class="ml-1.5 text-[10px] bg-amber-500/20 text-amber-300 border border-amber-400/30 px-1.5 rounded">🔥热</span>' :
-          row.score >= 680 ? '<span class="ml-1.5 text-[10px] bg-cyan-500/10 text-cyan-300 border border-cyan-400/20 px-1.5 rounded">TOP</span>' : '';
+          row.score >= 690 ? '<span class="ml-1.5 text-[10px] bg-amber-500/20 text-amber-300 border border-amber-400/30 px-1.5 py-0.5 rounded font-mono">🔥拔尖</span>' :
+          row.score >= 680 ? '<span class="ml-1.5 text-[10px] bg-cyan-500/10 text-cyan-300 border border-cyan-400/20 px-1.5 py-0.5 rounded font-mono">TOP</span>' : '';
+
+        const diffDisplay = row.diff ? `+${row.diff}分` : '--';
+        const batchBadge = row.batch ? `<span class="text-[10px] text-slate-400 font-mono">${row.batch}</span>` : '';
+        const tagDisplay = row.tag || row.stream;
 
         tr.innerHTML = `
           <td class="py-4 px-5 font-semibold text-white group-hover:text-cyan-300 transition-colors">
             <div class="flex items-center gap-2">
-              <span class="w-1.5 h-6 rounded-full bg-cyan-400/50 group-hover:bg-cyan-400 transition-colors"></span>
-              <span>${row.major}${rankBadge}</span>
+              <span class="w-1.5 h-6 rounded-full bg-cyan-400/50 group-hover:bg-cyan-400 transition-colors flex-shrink-0"></span>
+              <span class="leading-snug">${row.major}${rankBadge}</span>
             </div>
           </td>
-          <td class="py-4 px-5 text-slate-300 text-xs">${row.college}</td>
-          <td class="py-4 px-5">
-            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-800 text-slate-300 border border-slate-700">
-              ${row.province}
+          <td class="py-4 px-5 text-slate-300 text-xs whitespace-nowrap">${row.college}</td>
+          <td class="py-4 px-5 whitespace-nowrap">
+            <div class="flex flex-col">
+              <span class="font-medium text-white text-xs">${row.province}</span>
+              ${batchBadge}
+            </div>
+          </td>
+          <td class="py-4 px-5 whitespace-nowrap">
+            <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-800 text-cyan-300 border border-slate-700/80">
+              ${tagDisplay}
             </span>
           </td>
-          <td class="py-4 px-5 text-xs text-slate-400 font-mono">${row.stream}</td>
-          <td class="py-4 px-5 text-center font-bold text-cyan-400 font-display text-lg">${row.score}</td>
-          <td class="py-4 px-5 text-center text-slate-300 font-mono text-xs">前 ${row.rank} 名</td>
-          <td class="py-4 px-5 text-center text-slate-400 font-mono text-xs">${row.quota} 人</td>
-          <td class="py-4 px-5 text-center">
+          <td class="py-4 px-5 text-center font-bold text-cyan-400 font-display text-lg whitespace-nowrap">${row.score}</td>
+          <td class="py-4 px-5 text-center whitespace-nowrap">
+            <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 font-mono" title="超本省当年特招线/一本线分值">
+              ${diffDisplay}
+            </span>
+          </td>
+          <td class="py-4 px-5 text-center text-slate-200 font-mono text-xs whitespace-nowrap font-semibold">前 ${row.rank} 位</td>
+          <td class="py-4 px-5 text-center text-slate-400 font-mono text-xs whitespace-nowrap">${row.quota} 人</td>
+          <td class="py-4 px-5 text-center whitespace-nowrap">
             <button onclick="window.promptAdmissions && window.promptAdmissions('${row.major}', '${row.province}')"
-              class="text-xs text-cyan-400 hover:text-white px-2.5 py-1 rounded-lg bg-cyan-500/10 hover:bg-cyan-500 transition-colors font-medium">
+              class="text-xs text-cyan-400 hover:text-white px-2.5 py-1 rounded-lg bg-cyan-500/10 hover:bg-cyan-500 transition-colors font-medium cursor-pointer">
               AI咨询
             </button>
           </td>`;
