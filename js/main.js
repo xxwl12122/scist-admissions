@@ -182,7 +182,7 @@
   });
 
   /* ─────────────────────────────────────────────────────────
-     5. 数字统计动画
+     5. 数字统计动画（DOM 就绪即刻向上平滑浮动，坚决杜绝 0 占位）
   ───────────────────────────────────────────────────────── */
   let statsAnimated = false;
 
@@ -190,32 +190,35 @@
     if (statsAnimated) return;
     statsAnimated = true;
     $$('.stat-number').forEach(el => {
-      const target = parseFloat(el.dataset.target);
-      const duration = 1800;
+      const target = parseFloat(el.dataset.target) || parseFloat(el.textContent) || 0;
+      if (!target) return;
+      const duration = 1200;
+      // 从目标值的 60% 起始向上平滑浮动递增，保证任何时刻都绝无 0 闪烁
+      const startVal = Math.max(1, Math.floor(target * 0.6));
       let start = null;
       function step(ts) {
         if (!start) start = ts;
         const progress = Math.min((ts - start) / duration, 1);
         const eased = 1 - Math.pow(1 - progress, 3);
-        el.textContent = Math.floor(eased * target);
-        if (progress < 1) requestAnimationFrame(step);
-        else el.textContent = target;
+        const current = Math.floor(startVal + (target - startVal) * eased);
+        el.textContent = current;
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          el.textContent = target;
+          el.classList.add('done');
+        }
       }
       requestAnimationFrame(step);
     });
   }
 
-  /* 如果英雄区已在视口就立即执行，否则等滚动 */
-  function checkStatsVisible() {
-    const hero = $('#hero');
-    if (!hero) return;
-    if (hero.getBoundingClientRect().top < window.innerHeight * 1.2) {
-      animateStats();
-    }
+  // 页面就绪后立即触发数字动画，不依赖脆弱滚动事件
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', animateStats);
+  } else {
+    animateStats();
   }
-
-  checkStatsVisible();
-  window.addEventListener('scroll', checkStatsVisible, { passive: true, once: true });
 
   /* ─────────────────────────────────────────────────────────
      6. 分数线大数据筛选引擎
@@ -264,10 +267,16 @@
     tableBody.innerHTML = '';
 
     if (filtered.length === 0) {
-      noScores && noScores.classList.remove('hidden');
+      if (noScores) {
+        noScores.classList.remove('hidden');
+        noScores.style.display = 'block';
+      }
       if (resultsCount) resultsCount.textContent = '共匹配到 0 条招生记录';
     } else {
-      noScores && noScores.classList.add('hidden');
+      if (noScores) {
+        noScores.classList.add('hidden');
+        noScores.style.display = 'none';
+      }
       if (resultsCount) resultsCount.textContent = `共匹配到 ${filtered.length} 条招生记录`;
 
       // 按分数降序

@@ -296,33 +296,33 @@ const FAQ_DATA = [
 const CAMPUS_DATA = [
   {
     group: "lab",
-    img: "https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=1200&q=80",
-    thumb: "https://images.unsplash.com/photo-1507413245164-6160d8298b31?auto=format&fit=crop&w=800&q=80",
+    img: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80",
+    thumb: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80",
     badge: "国家级科研重器",
     badgeColor: "cyan",
-    title: "百比特超导量子中央光学超净实验室",
-    subtitle: "超低温 10mK 稀释制冷机与量子纠缠测量光路",
+    title: "百比特超导量子中央洁净实验室",
+    subtitle: "深色高精芯片机械与极低温激光精密台",
     caption: "配备 Class 100 级无尘超净间与极低温量子测控平台，本科生经安全考核后全天候刷卡入驻开展量子比特调测。"
   },
   {
     group: "library",
     img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
     thumb: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
-    badge: "学术信息中枢",
+    badge: "知识中枢",
     badgeColor: "blue",
-    title: "寰宇智联现代科技中枢图书馆",
-    subtitle: "挑空现代科研中枢与全学科顶刊数字中心",
+    title: "寰宇星图未来图书馆",
+    subtitle: "冷色调现代几何线条与极简挑空科研大厅",
     caption: "挑空通明的大型现代学术研讨中枢，藏书280万册，配备全静音个人研学仓、顶级学术期刊全库实时镜像与24小时通宵研讨区。"
   },
   {
     group: "living",
-    img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
-    thumb: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
-    badge: "现代书院风貌",
+    img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
+    thumb: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80",
+    badge: "极客生活",
     badgeColor: "teal",
-    title: "现代科研综合楼与书院建筑群",
-    subtitle: "冷灰色几何玻璃幕墙生态楼宇与智慧书院",
-    caption: "采用绿色低碳被动式建筑工艺，融合院士工作站、双人间极客生活公寓与每栋书院专属的头脑风暴创客空间。"
+    title: "书院极客工作站与研学公寓",
+    subtitle: "现代简约工业风自习与青年科技团队讨论空间",
+    caption: "配备人体工学工作位、双人间恒温新风公寓、头脑风暴白板讨论区与星光咖啡吧，为本科生提供24小时硬核创新孵化沃土。"
   },
   {
     group: "lab",
@@ -360,8 +360,8 @@ const CAMPUS_DATA = [
    硬核育人关键统计数字（对标国内顶尖新型研究型大学）
    ========================================================================= */
 const STATS_DATA = [
-  { target: 18, suffix: "+", color: "cyan", label: "国家级重点实验室/工程中心" },
-  { target: 42, suffix: "位", color: "sky", label: "两院院士与国家杰青导师" },
-  { target: 78, suffix: ".4%", color: "blue", label: "本科毕业生推免保研直博率" },
-  { target: 92, suffix: "%", color: "teal", label: "毕业生直通战略科技与硬核领跑企业" },
+  { target: 18, suffix: "+", color: "cyan", label: "国家级重点实验室/中心" },
+  { target: 36, suffix: "位", color: "sky", label: "两院院士与领军特聘导师" },
+  { target: 89, suffix: ".4%", color: "blue", label: "本科毕业生深造率" },
+  { target: 120, suffix: "+", color: "teal", label: "年均 CNS 及顶刊顶会论文" },
 ];
